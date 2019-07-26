@@ -36,5 +36,8 @@
     "@k2oss/k2-broker-core": "0.0.4",
     "parcel-bundler": "^1.12.3",
     "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "build": "^0.1.4"
   }
 }
