@@ -1,5 +1,5 @@
 // Constants used in place of service keys.
-const baseUriEndpoint = "https://api.echosign.com/api/rest/v6";
+const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
 
 ondescribe = function() {
     postSchema({
@@ -7,24 +7,35 @@ ondescribe = function() {
             displayName: "Microsoft Teams",
             description: "A service for integrating with Microsoft Teams.",
             objects: {
-                "com.k2.microsoft.teams.uris": {
-                    displayName: "Uris",
-                    description: "Base Uris for Adobe Sign API",
+                "com.k2.microsoft.teams.team": {
+                    displayName: "Team",
+                    description: "Team",
                     properties: {
-                        "com.k2.microsoft.teams.uris.apiaccesspoint" :{
-                            displayName: "API Acces Point",
+                        "com.k2.microsoft.teams.team.id" :{
+                            displayName: "Id",
                             type: "string"
                         },
-                        "com.k2.microsoft.teams.uris.webaccesspoint" :{
-                            displayName: "Web Acces Point",
+                        "com.k2.microsoft.teams.team.weburl" :{
+                            displayName: "Web Url",
                             type: "string"
+                        },
+                        "com.k2.microsoft.teams.team.isarchived" :{
+                            displayName: "Is Archived",
+                            type: "boolean"
                         }
                     },
                     methods: {
-                        "com.k2.microsoft.teams.uris.get": {
-                            displayName: "Get Base Uris",
+                        "com.k2.microsoft.teams.team.get": {
+                            displayName: "Get Team",
                             type: "read",
-                            outputs: [ "com.k2.microsoft.teams.uris.apiaccesspoint", "com.k2.microsoft.teams.uris.webaccesspoint"]
+                            parameters: {
+                                "com.k2.microsoft.teams.team.teamid": {
+                                    displayName: "Team Id",
+                                    type: "string"
+                                }
+                            },                            
+                            requiredParameters: ["com.k2.microsoft.teams.team.teamid"],
+                            outputs: [ "com.k2.microsoft.teams.team.id", "com.k2.microsoft.teams.team.weburl","com.k2.microsoft.teams.team.isarchived"]
                         }
                     }
                 }                
@@ -36,7 +47,7 @@ ondescribe = function() {
 onexecute = function(objectName, methodName, parameters, properties) {
     switch (objectName)
     {
-        case "com.k2.microsoft.teams.uris": onexecuteMethods(methodName, parameters, properties); break;
+        case "com.k2.microsoft.teams.team": onexecuteMethods(methodName, parameters, properties); break;
         default: throw new Error("The object " + objectName + " is not supported.");
     }
 }
@@ -44,16 +55,12 @@ onexecute = function(objectName, methodName, parameters, properties) {
 function onexecuteMethods(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     switch (methodName)
     {
-        case "com.k2.microsoft.teams.uris.get": onexecuteUrisGet(parameters, properties); break;
+        case "com.k2.microsoft.teams.team.get": onexecuteTeamGet(parameters, properties); break;
         default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
 
-
-
-
-
-function onexecuteUrisGet(parameters: SingleRecord, properties: SingleRecord) {
+function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState !== 4) return;
@@ -62,29 +69,13 @@ function onexecuteUrisGet(parameters: SingleRecord, properties: SingleRecord) {
 
         var obj = JSON.parse(xhr.responseText);
         postResult({
-            "com.k2.microsoft.teams.uris.apiaccesspoint": obj.apiAccessPoint,
-            "com.k2.microsoft.teams.uris.webaccesspoint": obj.webAccessPoint
+            "com.k2.microsoft.teams.team.id": obj.Id,
+            "com.k2.microsoft.teams.team.weburl": obj.webUrl,
+            "com.k2.microsoft.teams.team.name": obj.isArchived
         });  
     };
     xhr.withCredentials = true;
-    xhr.open("GET", baseUriEndpoint  + "/baseUris");
+    xhr.open("GET", baseUriEndpoint  + "/team/" + parameters["com.k2.microsoft.teams.team.teamid"]);
     xhr.send();
      
-}
-
-//Adobe Sign Specific Methods
-function getBaseUri(){
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState !== 4) return;
-        if (xhr.status !== 200) throw new Error("Failed with status " + xhr.status);
-        console.log(xhr.responseText);
-
-        var obj = JSON.parse(xhr.responseText);
-        apiAccessPoint: obj.apiAccessPoint;
-        webAccessPoint: obj.webAccessPoint;
-    };
-    xhr.withCredentials = true;
-    xhr.open("GET", baseUriEndpoint  + "/baseUris");
-    xhr.send();
 }
