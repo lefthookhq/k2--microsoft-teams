@@ -1,0 +1,40 @@
+{
+  "packageComments": {
+    "environmentId": "Unique GUID for your tenant. See extension to create new one https://marketplace.visualstudio.com/items?itemName=heaths.vscode-guid",
+    "name-description-version": "Provide a unique name, description and version for your broker"
+  },
+  "environmentId": "6d906725-887f-4d87-af5e-30483c5df702",
+  "name": "microsoft-teams",
+  "version": "0.0.1",
+  "description": "Microsoft Teams",
+  "homepage": "https://products.office.com/en-us/microsoft-teams/group-chat-software",
+  "license": "ISC",
+  "author": {
+    "name": "K2 OSS",
+    "email": "oss@k2.com",
+    "url": "https://www.k2.com"
+  },
+  "files": [
+    "dist/index.js",
+    "def/broker.json"
+  ],
+  "keywords": [
+    "k2-integration",
+    "broker",
+    "microsoft",
+    "teams"
+  ],
+  "k2": {
+    "broker": "def/broker.json"
+  },
+  "scripts": {
+    "build": "parcel build index.ts --experimental-scope-hoisting",
+    "postbuild": "powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File post-build.ps1"
+  },
+  "sideEffects": true,
+  "devDependencies": {
+    "@k2oss/k2-broker-core": "0.0.4",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.2"
+  }
+}
