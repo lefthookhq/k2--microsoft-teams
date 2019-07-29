@@ -1,2 +1,2 @@
 # com.k2.microsoft.teams
-JS Broker for MSFT Teams
+K2 Javascript Broker: Microsoft Teams
