@@ -143,3 +143,42 @@ function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
     xhr.send();
      
 }
+
+function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord){
+    /*
+        This method should combine two Graph API calls to simplify the experence for the K2 developer. You will need the ID in the return for the next call.
+            - Create group to create the group for the team. 
+                - POST /groups
+                    REQUEST:
+                    {
+                        "description": "We are the new Team",
+                        "displayName": "New Team",
+                        "groupTypes": [
+                            "Unified"
+                        ],
+                        "mailEnabled": true,
+                        "mailNickname": "newteam",
+                        "securityEnabled": false
+                    }
+            - Create Team to Team enable the group.
+                - POST /groups/:groupID/team
+                    NOTE: No Request Body is required. Just call the post to this endpoint with the group id from the first call.
+
+        NOTE: The user identity adding the group and team is added as the owner to the team. Could need to add a user as a team owner if additional processing isn't done as the identity that created the group.
+        This next method should be optional to add a owner to a team and add them as a member during team creations.
+            - Look up user by UPN to get User ID Guid.
+                - GET /users/:userIDorPrincipalName
+            - Add Owner to Team using User ID from previous step.
+                - POST /groups/:groupID/owners/$ref
+                    REQUEST:
+                        {
+                            "@odata.id": "https://graph.microsoft.com/beta/users/{user id guid}"
+                        }
+            - Optional: Add the new owner as member of the team. Owenrs are not automatically members.
+                - POST /groups/:teamID/members/$ref
+                    REQUEST:
+                        {
+                            "@odata.id": "https://graph.microsoft.com/beta/users/{user id guid}"
+                        }
+    */
+}

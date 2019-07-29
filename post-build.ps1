@@ -11,7 +11,10 @@ Set-Location $path
 $k2Path = (Get-ItemProperty "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\SourceCode\blackpearl\blackpearl Core" -Name "InstallDir")."InstallDir"
 $jsHost = "$($k2Path)SourceCode.JavaScript.BrokerHost\SourceCode.JavaScript.BrokerHost.exe"
 $jsHostProcess = Get-Process | Where-Object {$_.ProcessName -eq "SourceCode.JavaScript.BrokerHost"}
-if ($null -eq $jsHostProcess ) {Start-Process $jsHost}
+if ($null -eq $jsHostProcess ) {
+    Start-Process $jsHost
+    Start-Sleep -Seconds 5 #Added wait to allow host to start to prevent script failure
+}
 
 # Get config values from package.json
 $packageJson = Get-Content -Raw -Path "$($path)\package.json" | ConvertFrom-Json
