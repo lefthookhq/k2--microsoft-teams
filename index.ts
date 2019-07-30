@@ -42,23 +42,15 @@ ondescribe = function() {
                         "com.k2.microsoft.teams.team.mailnickname" :{
                             displayName: "Mail Nick Name",
                             type: "string"
+                        },
+                        "com.k2.microsoft.teams.team.archivestatus":{
+                            displayName: "Archive Status Link",
+                            type: "string"
                         }
                     },
                     methods: {
-                        "com.k2.microsoft.teams.team.url.get": {
-                            displayName: "Get Team Url",
-                            type: "read",
-                            parameters: {
-                                "com.k2.microsoft.teams.team.teamid": {
-                                    displayName: "Team Id",
-                                    type: "string"
-                                }
-                            },                            
-                            requiredParameters: ["com.k2.microsoft.teams.team.teamid"],
-                            outputs: [ "com.k2.microsoft.teams.team.id", "com.k2.microsoft.teams.team.weburl"]
-                        },
                         "com.k2.microsoft.teams.team.get": {
-                            displayName: "Get Team",
+                            displayName: "Get",
                             type: "read",
                             parameters: {
                                 "com.k2.microsoft.teams.team.teamid": {
@@ -73,11 +65,181 @@ ondescribe = function() {
                                         "com.k2.microsoft.teams.team.description",
                                         "com.k2.microsoft.teams.team.email",
                                         "com.k2.microsoft.teams.team.mailenabled",
-                                        "com.k2.microsoft.teams.team.mailnickname"
+                                        "com.k2.microsoft.teams.team.mailnickname",
+                                        "com.k2.microsoft.teams.team.weburl"
                                     ]
+                        },
+                        "com.k2.microsoft.teams.team.create":{
+                            displayName: "Create",
+                            description: "Creates a new group and adds a team to the group",
+                            type: "create",
+                            inputs: [   "com.k2.microsoft.teams.team.displayname",   
+                                        "com.k2.microsoft.teams.team.description",
+                                        "com.k2.microsoft.teams.team.mailenabled",
+                                        "com.k2.microsoft.teams.team.mailnickname"
+                            ],
+                            requiredInputs: [ "com.k2.microsoft.teams.team.displayname" ],
+                            outputs: [  "com.k2.microsoft.teams.team.id",
+                                        "com.k2.microsoft.teams.team.displayname",
+                                        "com.k2.microsoft.teams.team.creationdate",
+                                        "com.k2.microsoft.teams.team.description",
+                                        "com.k2.microsoft.teams.team.email",
+                                        "com.k2.microsoft.teams.team.mailenabled",
+                                        "com.k2.microsoft.teams.team.mailnickname",
+                                        "com.k2.microsoft.teams.team.weburl"
+                                    ]
+
+                        },
+                        "com.k2.microsoft.teams.team.add":{
+                            displayName: "Add to Existing Group",
+                            description: "Add a team to an already existing AAD Group",
+                            type: "create",
+                            outputs: [  "com.k2.microsoft.teams.team.id",
+                                        "com.k2.microsoft.teams.team.displayname",
+                                        "com.k2.microsoft.teams.team.creationdate",
+                                        "com.k2.microsoft.teams.team.description",
+                                        "com.k2.microsoft.teams.team.email",
+                                        "com.k2.microsoft.teams.team.mailenabled",
+                                        "com.k2.microsoft.teams.team.mailnickname",
+                                        "com.k2.microsoft.teams.team.weburl"
+                                    ]
+
+                        },
+                        "com.k2.microsoft.teams.team.archive":{
+                            displayName: "Archive",
+                            description: "Archive Team",
+                            type: "execute"
+                        },
+                        "com.k2.microsoft.teams.team.unarchive":{
+                            displayName: "Unarchive",
+                            description: "Unarchive Team",
+                            type: "execute"
+                        },
+                        "com.k2.microsoft.teams.team.checkstatus":{
+                            displayName: "Check Archival Status",
+                            description: "Check the stauts of an archival job.",
+                            type: "read",
+                            parameters: {
+                                "com.k2.microsoft.teams.team.archivejoblocation": {
+                                    displayName: "Archive Job Location",
+                                    type: "string"
+                                }
+                            },
+                            requiredParameters: ["com.k2.microsoft.teams.team.archivejoblocation"],
+                            outputs: [  "com.k2.microsoft.teams.team.id",
+                                        "com.k2.microsoft.teams.team.displayname",
+                                        "com.k2.microsoft.teams.team.creationdate",
+                                        "com.k2.microsoft.teams.team.description",
+                                        "com.k2.microsoft.teams.team.email",
+                                        "com.k2.microsoft.teams.team.mailenabled",
+                                        "com.k2.microsoft.teams.team.mailnickname",
+                                        "com.k2.microsoft.teams.team.weburl"
+                            ]
+                        } 
+                        
+                    }
+                },
+                "com.k2.microsoft.teams.channel":{
+                    displayName: "Channel",
+                    description: "Channel",
+                    properties: {
+                        "com.k2.microsoft.teams.channel.id" :{
+                            displayName: "id",
+                            description: "id",
+                            type: "string"
+                        },
+                        "com.k2.microsoft.teams.channel.displayName" :{
+                            displayName: "Display Name",
+                            description: "Display Name",
+                            type: "string"
+                        },
+                        "com.k2.microsoft.teams.channel.description" :{
+                            displayName: "Description",
+                            description: "Description",
+                            type: "string"
+                        },
+                        "com.k2.microsoft.teams.channel.email" :{
+                            displayName: "Email",
+                            description: "Email",
+                            type: "string"
+                        },
+                        "com.k2.microsoft.teams.channel.webUrl" :{
+                            displayName: "Web URL",
+                            description: "Web URL",
+                            type: "string"
+                        }
+                    },
+                    methods:{
+                        "com.k2.microsoft.teams.channel.get": {
+                            displayName: "Get Channel",
+                            type: "read",
+                            parameters: {
+                                "com.k2.microsoft.teams.channel.displayName": {
+                                    displayName: "Display Name",
+                                    type: "string"
+                                }
+                            },                            
+                            requiredParameters: ["com.k2.microsoft.teams.channel.displayName"],
+                            outputs: [  "com.k2.microsoft.teams.channel.id",
+                                        "com.k2.microsoft.teams.channel.displayname",
+                                        "com.k2.microsoft.teams.channel.description",
+                                        "com.k2.microsoft.teams.channel.email",
+                                        "com.k2.microsoft.teams.channel.webUrl"
+                                    ]
+                        },
+                        "com.k2.microsoft.teams.channel.list": {
+                            displayName: "List Channels",
+                            type: "list",
+                            outputs: [  "com.k2.microsoft.teams.channel.id",
+                                        "com.k2.microsoft.teams.channel.displayname",
+                                        "com.k2.microsoft.teams.channel.description",
+                                        "com.k2.microsoft.teams.channel.email",
+                                        "com.k2.microsoft.teams.channel.webUrl"
+                                    ]
+                        },
+                        "com.k2.microsoft.teams.channel.create":{
+                            displayName: "Create Channel",
+                            type: "create",
+                            parameters: {
+                                "com.k2.microsoft.teams.channel.displayName": {
+                                    displayName: "Display Name",
+                                    type: "string"
+                                },
+                                "com.k2.microsoft.teams.channel.description": {
+                                    displayName: "Description",
+                                    type: "string"
+                                }
+                            },                            
+                            requiredParameters: ["com.k2.microsoft.teams.channel.displayName","com.k2.microsoft.teams.channel.description"],
+                            outputs: [  "com.k2.microsoft.teams.channel.id",
+                                        "com.k2.microsoft.teams.channel.displayname",
+                                        "com.k2.microsoft.teams.channel.description",
+                                        "com.k2.microsoft.teams.channel.email",
+                                        "com.k2.microsoft.teams.channel.webUrl"
+                                    ]
+
+                        },
+                        "com.k2.microsoft.teams.channel.delete":{
+                            displayName: "Delete Channel",
+                            type: "delete",
+                            parameters: {
+                                "com.k2.microsoft.teams.channel.displayName": {
+                                    displayName: "Display Name",
+                                    type: "string"
+                                }
+                            },                            
+                            requiredParameters: ["com.k2.microsoft.teams.channel.displayName"]
                         }
                     }
-                }                
+                }/*,
+                 "com.k2.microsoft.teams.Tab":{
+                    displayName: "Tab",
+                    description: "Tab",
+                    properties:{
+                    
+                    },
+                    methods:{}
+                }         */        
             }
         }
     });
@@ -94,11 +256,13 @@ onexecute = function(objectName, methodName, parameters, properties) {
 function onexecuteMethods(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     switch (methodName)
     {
-        case "com.k2.microsoft.teams.team.url.get": onexecuteTeamGetUrl(parameters, properties); break;
         case "com.k2.microsoft.teams.team.get": onexecuteTeamGet(parameters, properties); break;
         default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
+//#region Team Methods
+
+//Need to map out methods for archive, unarchive and check archive status
 
 function onexecuteTeamGetUrl(parameters: SingleRecord, properties: SingleRecord) {
     var xhr = new XMLHttpRequest();
@@ -149,6 +313,8 @@ function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord)
         This method should combine two Graph API calls to simplify the experence for the K2 developer. You will need the ID in the return for the next call.
             - Create group to create the group for the team. 
                 - POST /groups
+                    NOTE: The groupType and securityEnabled values should be hard coded in the broker for this iteration until we understand if there is a use case where those aren't enabled.
+                    We will have an add team to group method for existing AAD groupss. I feel that these options are outside the knowledge area of our target users. Those are AAD Admin level questions.
                     REQUEST:
                     {
                         "description": "We are the new Team",
@@ -189,6 +355,45 @@ function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord)
     */
 }
 
+function onexecuteTeamAdd(parameters: SingleRecord, properties: SingleRecord){
+    /* 
+        Create Team to Team enable the group.
+        - POST /groups/:groupID/team 
+    */
+}
+
+function onexecuteTeamList(parameters: SingleRecord, properties: SingleRecord){
+    /*  
+        
+        List Teams 
+            GET /groups?$select=id,resourceProvisioningOptions
+                NOTE: Fields to return are configurable with the select parameter. 
+                Results will have to be filtered on resourceProvisioningOptions array 
+                that contains the value of Team in v1 of the endpoint.
+        
+        List Teams By User
+            GET /users/:id/joinedTeams
+
+        List Teams by current user
+            GET /me/joinedTeams
+
+        Response Example:
+        "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#groups",
+        "value": [
+            {
+                "id": "4ab574b6-bbc6-4a47-8059-40fa698deb08",
+                "displayName": "Dev Team",
+                "description": "Development Research Team",
+                "isArchived": false
+            }
+    ]
+
+    */
+
+}
+//#endregion
+
+//#region Channel Methods
 function onexecuteChannelCreate(parameters: SingleRecord, properties: SingleRecord){
     /*
         Add a channel to a team.
@@ -220,7 +425,9 @@ function onexecuteChannelDelete(parameters: SingleRecord, properties: SingleReco
         DELETE /teams/:groupID/channels/:channelID
     */
 }
+//#endregion
 
+//#region Tab Methods
 function onexecuteTabCreate(parameters: SingleRecord, properties: SingleRecord){
 
     /*
@@ -287,5 +494,6 @@ function onexecuteTabList(parameters: SingleRecord, properties: SingleRecord){
         GET /teams/{group id}/channels/{channel id}/tabs
     */
 }
+//#endregion
 
 
