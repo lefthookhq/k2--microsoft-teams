@@ -166,15 +166,21 @@ function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord)
 
         NOTE: The user identity adding the group and team is added as the owner to the team. Could need to add a user as a team owner if additional processing isn't done as the identity that created the group.
         This next method should be optional to add a owner to a team and add them as a member during team creations.
+
+        REQUIRED FOR OPTIONAL METHODS:
             - Look up user by UPN to get User ID Guid.
-                - GET /users/:userIDorPrincipalName
+                - GET /users/:userPrincipalName
+
+        OPTIONAL 1:
             - Add Owner to Team using User ID from previous step.
                 - POST /groups/:groupID/owners/$ref
                     REQUEST:
                         {
                             "@odata.id": "https://graph.microsoft.com/beta/users/{user id guid}"
                         }
-            - Optional: Add the new owner as member of the team. Owenrs are not automatically members.
+
+        OPTIONAL 2:
+            - Add the new owner as member of the team. Owenrs are not automatically members.
                 - POST /groups/:teamID/members/$ref
                     REQUEST:
                         {
@@ -182,3 +188,104 @@ function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord)
                         }
     */
 }
+
+function onexecuteChannelCreate(parameters: SingleRecord, properties: SingleRecord){
+    /*
+        Add a channel to a team.
+
+        POST /teams/:groupID/channels
+            REQUEST BODY:
+                {
+                    "displayName": "Innovation Discussion2",
+                    "description": "This channel is where we debate all future innovation plans"
+                }
+     */
+}
+
+function onexecuteChannelList(parameters: SingleRecord, properties: SingleRecord){
+    /*
+        GET /teams/:groupID/channels
+    */
+}
+
+function onexecuteChannelGet(parameters: SingleRecord, properties: SingleRecord){
+    /* 
+        GET /teams/{group id}/channels?$filter=displayName eq '<channel display name>'
+    */
+}
+
+function onexecuteChannelDelete(parameters: SingleRecord, properties: SingleRecord){
+    /*
+        NOTE: Might want to combine this with Get Channel to enable this method to be called in one call using the Channel display name as the value to Delete by.
+        DELETE /teams/:groupID/channels/:channelID
+    */
+}
+
+function onexecuteTabCreate(parameters: SingleRecord, properties: SingleRecord){
+
+    /*
+        REFERENCE: https://docs.microsoft.com/en-us/graph/teams-configuring-builtin-tabs
+
+        NOTE: We may want to create wrapper methods that call a single create Tab method to give a more
+        intutive experience for K2 developers. For example: A Create OneNote Tab method, etc...
+
+        APP IDS (entityId) for Tabs
+            Word: com.microsoft.teamspace.tab.file.staticviewer.word
+            Excel: com.microsoft.teamspace.tab.file.staticviewer.excel
+            PowerPoint: com.microsoft.teamspace.tab.file.staticviewer.powerpoint
+            PDF: com.microsoft.teamspace.tab.file.staticviewer.pdf
+            OneNote: 0d820ecd-def2-4297-adad-78056cde7c78
+            Planner: com.microsoft.teamspace.tab.planner
+            Sharepoint: 2a527703-1f6f-4559-a332-d8a7d288cd88
+            Microsoft Forms: 81fef3a6-72aa-4648-a763-de824aeafb7d
+            Microsoft Stream: com.microsoftstream.embed.skypeteamstab
+            Website: com.microsoft.teamspace.tab.web
+            
+            configuration:
+                {
+                "entityId": "string",
+                "contentUrl": "string (HTTPS Url)",
+                "websiteUrl": "string (HTTPS Url)",
+                "removeUrl": "string (HTTPS Url)"  
+                }
+
+            The following are not configurable via graph and will have to be configured in teams after they are added.
+            The configuration section will be omitted from the request body.
+            
+                Wiki: com.microsoft.teamspace.tab.wiki 
+                PowerBI: om.microsoft.teamspace.tab.powerbi
+                SharePoint page and lists: 2a527703-1f6f-4559-a332-d8a7d288cd88
+             
+
+        POST /teams/{group id}/channels/{channel id}/tabs
+            REQUEST BODY:
+            {  
+                "id": "string",
+                "displayName": "string",
+                "webUrl": "string",
+
+                "configuration" : <see above>
+            }
+
+    */
+}
+
+function onexecuteTabDelete(parameters: SingleRecord, properties: SingleRecord){
+    /*
+        DELETE /teams/:groupId/channels/:channelID/tabs/:tabID
+    */
+}
+
+function onexecuteTabGet(parameters: SingleRecord, properties: SingleRecord){
+    /* 
+        GET /teams/{group id}/channels/{channel id}/tabs$filter=displayName eq '<tab display name>'
+    */
+}
+
+function onexecuteTabList(parameters: SingleRecord, properties: SingleRecord){
+    /* 
+        GET /teams/{group id}/channels/{channel id}/tabs
+    */
+}
+
+
