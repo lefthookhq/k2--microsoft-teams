@@ -264,25 +264,6 @@ function onexecuteMethods(methodName: string, parameters: SingleRecord, properti
 
 //Need to map out methods for archive, unarchive and check archive status
 
-function onexecuteTeamGetUrl(parameters: SingleRecord, properties: SingleRecord) {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState !== 4) return;
-        if (xhr.status !== 200) throw new Error("Failed with status " + xhr.status);
-        console.log(xhr.responseText);
-
-        var obj = JSON.parse(xhr.responseText);
-        postResult({
-            "com.k2.microsoft.teams.team.id": obj.id,
-            "com.k2.microsoft.teams.team.weburl": obj.webUrl,
-            "com.k2.microsoft.teams.team.isarchived": obj.isArchived
-        });  
-    };
-    xhr.withCredentials = true;
-    xhr.open("GET", baseUriEndpoint  + "/teams/" + parameters["com.k2.microsoft.teams.team.teamid"]);
-    xhr.send();
-     
-}
 
 function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
     var xhr = new XMLHttpRequest();
