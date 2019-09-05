@@ -410,10 +410,10 @@ ondescribe = function () {
                             description: "Message Body",
                             type: "string"
                         },
-                        "com.k2.microsoft.teams.channel.message.importance": {
-                            displayName: "Importance (Normal/ High)",
+                        "com.k2.microsoft.teams.channel.message.isimportant": {
+                            displayName: "Is Important",
                             description: "Message Importance (Normal/ High)",
-                            type: "string"
+                            type: "boolean"
                         }
                     },
                     methods: {
@@ -495,7 +495,7 @@ ondescribe = function () {
                                 "com.k2.microsoft.teams.channel.id",
                                 "com.k2.microsoft.teams.channel.message.subject",
                                 "com.k2.microsoft.teams.channel.message.body",
-                                "com.k2.microsoft.teams.channel.message.importance"
+                                "com.k2.microsoft.teams.channel.message.isimportant"
                             ],
                             requiredInputs: ["com.k2.microsoft.teams.channel.teamid",
                             "com.k2.microsoft.teams.channel.id",
@@ -1807,9 +1807,11 @@ function onexecuteSendMessage(parameters: SingleRecord, properties: SingleRecord
 
 function SendMessage(parameters: SingleRecord, properties: SingleRecord, cb) {
 
+    var importance = properties["com.k2.microsoft.teams.channel.message.isimportant"] == "true"? "High":"Normal";
+
     var data = JSON.stringify({
         "subject": properties["com.k2.microsoft.teams.channel.message.subject"],
-        "importance": properties["com.k2.microsoft.teams.channel.message.importance"],
+        "importance": importance.toString(),
         "body": 
             {
                 "contentType": "html", 
