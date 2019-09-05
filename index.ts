@@ -1,5 +1,6 @@
 // Constants used in place of service keys.
 const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
+const baseUriEndpointBeta = "https://graph.microsoft.com/beta";
 
 ondescribe = function () {
     postSchema({
@@ -399,6 +400,21 @@ ondescribe = function () {
                             description: "Team Id",
                             type: "string"
                         },
+                        "com.k2.microsoft.teams.channel.message.subject": {
+                            displayName: "Subject",
+                            description: "Message Subject",
+                            type: "string"
+                        },
+                        "com.k2.microsoft.teams.channel.message.body": {
+                            displayName: "Body",
+                            description: "Message Body",
+                            type: "string"
+                        },
+                        "com.k2.microsoft.teams.channel.message.importance": {
+                            displayName: "Importance (Normal/ High)",
+                            description: "Message Importance (Normal/ High)",
+                            type: "string"
+                        }
                     },
                     methods: {
                         "com.k2.microsoft.teams.channel.get": {
@@ -472,6 +488,21 @@ ondescribe = function () {
                                 "com.k2.microsoft.teams.channel.description"],
                             outputs: ["com.k2.microsoft.teams.channel.issuccessful"]
                         },
+                        "com.k2.microsoft.teams.channel.sendmessage": {
+                            displayName: "Send Message to a channel",
+                            type: "create",
+                            inputs: ["com.k2.microsoft.teams.channel.teamid",
+                                "com.k2.microsoft.teams.channel.id",
+                                "com.k2.microsoft.teams.channel.message.subject",
+                                "com.k2.microsoft.teams.channel.message.body",
+                                "com.k2.microsoft.teams.channel.message.importance"
+                            ],
+                            requiredInputs: ["com.k2.microsoft.teams.channel.teamid",
+                            "com.k2.microsoft.teams.channel.id",
+                            "com.k2.microsoft.teams.channel.message.body"
+                            ],
+                            outputs: ["com.k2.microsoft.teams.channel.issuccessful"]
+                        }
                     }
                 },
                 "com.k2.microsoft.teams.tab": {
@@ -1557,6 +1588,7 @@ function onexecuteChannel(methodName: string, parameters: SingleRecord, properti
         case "com.k2.microsoft.teams.channel.create": onexecuteChannelCreate(parameters, properties); break;
         case "com.k2.microsoft.teams.channel.delete": onexecuteChannelDelete(parameters, properties); break;
         case "com.k2.microsoft.teams.channel.update": onexecuteChannelUpdate(parameters, properties); break;
+        case "com.k2.microsoft.teams.channel.sendmessage": onexecuteSendMessage(parameters, properties); break;
         default: throw new Error("The channel method " + methodName + " is not supported...");
     }
 }
@@ -1761,6 +1793,39 @@ function UpdateChannel(parameters: SingleRecord, properties: SingleRecord, cb) {
     });
 
 }
+
+function onexecuteSendMessage(parameters: SingleRecord, properties: SingleRecord) {
+
+    SendMessage(parameters, properties, function (a) {
+
+    postResult({
+        "com.k2.microsoft.teams.channel.issuccessful": true
+    });
+
+    });
+}
+
+function SendMessage(parameters: SingleRecord, properties: SingleRecord, cb) {
+
+    var data = JSON.stringify({
+        "subject": properties["com.k2.microsoft.teams.channel.message.subject"],
+        "importance": properties["com.k2.microsoft.teams.channel.message.importance"],
+        "body": 
+            {
+                "contentType": "html", 
+                "content": properties["com.k2.microsoft.teams.channel.message.body"]
+            }
+    });
+
+    var url = baseUriEndpointBeta + "/teams/" + properties["com.k2.microsoft.teams.channel.teamid"] + "/channels/" + properties["com.k2.microsoft.teams.channel.id"] + "/messages";
+
+    ExecuteRequest(url, data, "POST", function (responseText) {
+        if (typeof cb === 'function') cb(responseText);
+    });
+
+}
+
+
 function onexecuteTabGet(parameters: SingleRecord, properties: SingleRecord) {
 
     GetTabInformation(parameters, properties, function (a) {
