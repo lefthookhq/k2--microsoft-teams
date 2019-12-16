@@ -1,7 +1,7 @@
 // Constants used in place of service keys.
 const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
 const baseUriEndpointBeta = "https://graph.microsoft.com/beta";
-
+//K2 Required 
 ondescribe = function () {
     postSchema({
         "com.k2.microsoft.teams": {
@@ -1018,6 +1018,7 @@ onexecute = function (objectName, methodName, parameters, properties) {
     }
 }
 
+// Begin standard JS --
 function onexecuteApp(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     switch (methodName) {
         case "com.k2.microsoft.teams.apps.list": onexecuteInstalledAppsList(parameters, properties); break;
