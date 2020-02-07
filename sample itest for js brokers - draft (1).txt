@@ -1,0 +1,212 @@
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SourceCode.Hosting.Client.BaseAPI;
+using SourceCode.SmartObjects.Client;
+
+namespace JSONPlaceholder_testProject
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            ExecuteListMethod();
+            ExecuteReadMethod();
+        }
+
+        private SmartObjectClientServer GetSmartObjectClientServer()
+        {
+            //build connection string
+            var hostServerConnectionString = new SCConnectionStringBuilder();
+            hostServerConnectionString.Host = "localhost";
+            hostServerConnectionString.Port = 5555;
+            hostServerConnectionString.IsPrimaryLogin = true;
+            hostServerConnectionString.Integrated = true;
+
+            var soServer = new SmartObjectClientServer();
+            soServer.CreateConnection();
+            soServer.Connection.Open(hostServerConnectionString.ToString());
+            return soServer;
+        }
+
+        public void ExecuteListMethod()
+        {
+            var soServer = GetSmartObjectClientServer();
+            var mySmo = soServer.GetSmartObject("com_k2_sample_json_com_k2_sample_json_posts");
+
+            mySmo.MethodToExecute = "com_k2_sample_json_posts_getList";
+
+            var mySmoList = soServer.ExecuteList(mySmo);
+
+        }
+
+        public void ExecuteReadMethod()
+        {
+
+            var soServer = GetSmartObjectClientServer();
+            var mySmo = soServer.GetSmartObject("com_k2_sample_json_com_k2_sample_json_posts");
+
+            mySmo.MethodToExecute = "com_k2_sample_json_posts_getById";
+
+            try
+            {
+                mySmo = soServer.ExecuteScalar(mySmo);
+
+                var returnPropertyOne = mySmo.Properties["com.k2.sample.json.posts.id"].Value;
+                var returnPropertyTwo = mySmo.Properties["com.k2.sample.json.posts.userId"].Value;
+                var returnProppertyThree = mySmo.Properties["com.k2.sample.json.posts.title"].Value;
+                var returnProppertyFour = mySmo.Properties["com.k2.sample.json.posts.body"].Value;
+
+            }
+            catch (SmartObjectException soe)
+            {
+                GetSmartObjectException(soe);
+            }
+        }
+    }
+
+
+    public static void Cleanup(BaseAPIConnection connection, Guid serviceTypeGuid, Guid serviceInstanceGuid)
+    {
+        Cleanup(connection);
+        CleanupAllArtifacts(serviceTypeGuid, serviceInstanceGuid);
+        TruncateScriptTable();
+    }
+
+    public static void Cleanup(BaseAPIConnection connection)
+    {
+        if (connection != null)
+        {
+            connection.Close();
+            connection.Dispose();
+        }
+    }
+
+    public static bool Cleanup(Guid serviceTypeGuid)
+    {
+        return Cleanup(serviceTypeGuid, default(Guid));
+    }
+
+    public static bool Cleanup(Guid serviceTypeGuid, Guid serviceInstanceGuid)
+    {
+        var client = ConnectionHelper.GetServer<ServiceManagementServer>();
+        using (client.Connection)
+        {
+            if (serviceInstanceGuid != default(Guid))
+            {
+                client.DeleteServiceInstance(serviceInstanceGuid);
+            }
+
+            return client.DeleteServiceType(serviceTypeGuid, false);
+        }
+    }
+
+    public static void DeleteSmartObjects(Guid serviceInstanceGuid)
+    {
+        var managementServer = ConnectionHelper.GetServer<SmartObjectManagementServer>();
+        using (managementServer.Connection)
+        {
+            managementServer.DeleteSmartObjects(serviceInstanceGuid);
+        }
+    }
+
+    public static bool CleanupAllArtifacts(Guid serviceTypeGuid, Guid serviceInstanceGuid)
+    {
+        DeleteSmartObjects(serviceInstanceGuid);
+        return Cleanup(serviceTypeGuid, serviceInstanceGuid);
+    }
+    public static SmartObject SetupServiceInstance(SmartObjectClientServer client, Guid serviceInstanceGuid,
+        string siDisplayName, string siDescription, string fileUrl, string serviceTypeName, string smoName, out Guid serviceTypeGuid)
+    {
+        Utilities.TruncateScriptTable();
+
+        client = ConnectionHelper.GetServer<SmartObjectClientServer>();
+        SmartObject smartObject = client.GetSmartObject(Constants.SmartObjectName);
+
+        SmartMethod method = smartObject.Methods
+            .Cast<SmartMethod>()
+            .FirstOrDefault(m => m.Metadata.DisplayName == "Create From URL");
+
+        smartObject.MethodToExecute = method.Name;
+        smartObject.SetInputPropertyValue("Name", serviceTypeName);
+        smartObject.SetInputPropertyValue("Description", serviceTypeName + "_Description");
+        smartObject.SetInputPropertyValue("File_URL", fileUrl);
+
+        var scriptId = default(Guid);
+        serviceTypeGuid = default(Guid);
+
+        try
+        {
+            SmartObject result = client.ExecuteScalar(smartObject);
+
+            Assert.AreEqual(Constants.SmartObjectName, smartObject.Name);
+            Assert.AreEqual("JavaScript Service Provider", smartObject.Metadata.DisplayName);
+
+            Assert.IsNotNull(result.GetPropertyValue<string>("ScriptID"));
+            Assert.IsNotNull(result.GetPropertyValue<string>("ServiceTypeGuid"));
+
+            Assert.IsTrue(Guid.TryParse(result.GetPropertyValue<string>("ScriptID"), out scriptId));
+            Assert.IsTrue(Guid.TryParse(result.GetPropertyValue<string>("ServiceTypeGuid"), out serviceTypeGuid));
+
+            Assert.AreNotEqual(Guid.Empty, scriptId);
+            Assert.AreNotEqual(Guid.Empty, serviceTypeGuid);
+
+            // Create the service instance.
+            var server = ConnectionHelper.GetServer<ServiceManagementServer>();
+            using (server.Connection)
+            {
+                string serviceInstanceConfig = server.GetServiceInstanceConfig(serviceTypeGuid);
+                ServiceConfigInfo serviceConfigInfo = ServiceConfigInfo.Create(serviceInstanceConfig);
+
+                var metadata = server.GetServiceInstanceMetadata(serviceTypeGuid, serviceInstanceConfig);
+                var serviceInstanceInfo = ServiceInstanceInfo.Create(metadata);
+
+                Assert.AreEqual(serviceTypeName, serviceInstanceInfo.Name);
+                Assert.AreEqual(siDisplayName, serviceInstanceInfo.DisplayName);
+                Assert.AreEqual(siDescription, serviceInstanceInfo.Description);
+
+                server.RegisterServiceInstance(serviceTypeGuid,
+                    serviceInstanceGuid,
+                    serviceInstanceInfo.Name,
+                    serviceInstanceInfo.DisplayName,
+                    serviceInstanceInfo.Description,
+                    serviceConfigInfo.WriteXml());
+            }
+
+            Utilities.GenerateSmartObjects(serviceInstanceGuid);
+            return client.GetSmartObject(smoName);
+        }
+        catch
+        {
+            // Need to cleanup here if an exception was throws since 
+            // [ClassCleanup] does not run when exceptions are thrown in a [ClassInitalize].
+            Cleanup(client?.Connection, serviceTypeGuid, serviceInstanceGuid);
+            throw;
+        }
+    }
+
+    public static void GenerateSmartObjects(Guid serviceInstanceGuid)
+    {
+        var managementServer = ConnectionHelper.GetServer<SmartObjectManagementServer>();
+        using (managementServer.Connection)
+        {
+            managementServer.GenerateSmartObjects(serviceInstanceGuid,
+                createNew: true,
+                updateExisting: true,
+                deleteRemoved: true);
+        }
+    }
+
+    public static string GetSmartObjectExceptionMessage(SmartObjectException ex)
+    {
+        var sb = new StringBuilder();
+        foreach (SmartObjectExceptionData brokerData in ex.BrokerData)
+        {
+            sb.AppendLine(brokerData?.Message);
+        }
+
+        return sb.ToString();
+    }
+}
+
