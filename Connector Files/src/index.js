@@ -1,5 +1,5 @@
 
-metadata = {
+var metadata = {
     systemName: "CalebTest2",
     displayName: "CalebTest2 Example Broker",
     description: "An example broker"
