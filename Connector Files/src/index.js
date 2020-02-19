@@ -142,7 +142,7 @@ const AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid
 const AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
-ondescribe = function () {
+function ondescribe() {
     postSchema({
         [Teams]: {
             displayName: "Microsoft Teams",
@@ -1146,7 +1146,7 @@ ondescribe = function () {
         }
     });
 };
-onexecute = function (objectName, methodName, parameters, properties) {
+function onexecute(objectName, methodName, parameters, properties) {
     switch (objectName) {
         case Team:
             onexecuteTeam(methodName, parameters, properties);
@@ -1602,7 +1602,7 @@ function onexecuteTeamList(parameters, properties) {
             return {
                 [TeamId]: x.id,
                 [TeamDisplayName]: x.displayName,
-                [TeamResourceProvisioningOptions]]: x.resourceProvisioningOptions[0]
+                [TeamResourceProvisioningOptions]: x.resourceProvisioningOptions[0]
         };
         }));
     });
