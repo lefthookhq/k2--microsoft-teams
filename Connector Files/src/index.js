@@ -1,4 +1,11 @@
 "use strict";
+
+const metadata = {
+    systemName: "CalebTest2",
+    displayName: "CalebTest2 Example Broker",
+    description: "An example broker"
+};
+
 // Constants used in place of service keys.
 const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
 const baseUriEndpointBeta = "https://graph.microsoft.com/beta";
