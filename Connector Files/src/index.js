@@ -1,3 +1,4 @@
+import '@k2oss/k2-broker-core';
 
 var metadata = {
     systemName: "CalebTest2",
@@ -141,7 +142,7 @@ const AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid
 const AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
-async function ondescribe() {
+export async function ondescribe() {
     postSchema({
         [Teams]: {
             displayName: "Microsoft Teams",
@@ -1145,7 +1146,7 @@ async function ondescribe() {
         }
     });
 };
-async function onexecute(objectName, methodName, parameters, properties) {
+export async function onexecute(objectName, methodName, parameters, properties) {
     switch (objectName) {
         case Team:
             onexecuteTeam(methodName, parameters, properties);
@@ -1168,7 +1169,7 @@ function onexecuteApp(methodName, parameters, properties) {
         case AppsList:
             onexecuteInstalledAppsList(parameters, properties);
             break;
-        default: throw new Error("The method " + methodName + " is not supported..");
+        default: throw new Error("The method " + methodName + " is not supported.");
     }
 }
 function onexecuteTeam(methodName, parameters, properties) {
@@ -1211,7 +1212,7 @@ function onexecuteTeam(methodName, parameters, properties) {
             case TeamCheckStatus:
                 onexecuteTeamCheckStatus(parameters, properties);
                 break;
-            default: throw new Error("The method " + methodName + " is not supported..");
+            default: throw new Error("The method " + methodName + " is not supported.");
         }
     }
     catch (errMsg) {
@@ -1278,7 +1279,7 @@ function onexecuteTab(methodName, parameters, properties) {
             case TabCreateCustomTab:
                 onexecuteTabCreate(methodName, parameters, properties);
                 break;
-            default: throw new Error("The method " + methodName + " is not supported..");
+            default: throw new Error("The method " + methodName + " is not supported.");
         }
     }
     catch (errMsg) {
