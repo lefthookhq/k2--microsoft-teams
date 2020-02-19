@@ -10,141 +10,141 @@ const metadata = {
 const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
 const baseUriEndpointBeta = "https://graph.microsoft.com/beta";
 
-const Teams = "com.k2.microsoft.teams";
-const Team = "com.k2.microsoft.teams.team";
-const Channel = "com.k2.microsoft.teams.channel";
-const Tab = "com.k2.microsoft.teams.tab";
-const Apps = "com.k2.microsoft.teams.apps";
+const Teams = "teams"; // "com.k2.microsoft.teams";
+const Team = "team"; //  "com.k2.microsoft.teams.team";
+const Channel = "channel"; //  "com.k2.microsoft.teams.channel";
+const Tab = "tab"; //  "com.k2.microsoft.teams.tab";
+const Apps = "apps"; //  "com.k2.microsoft.teams.apps";
 
 //
 // Team
-const TeamId = "com.k2.microsoft.teams.team.id";
-const TeamWeburl = "com.k2.microsoft.teams.team.weburl";
-const TeamDisplayName = "com.k2.microsoft.teams.team.displayname";
-const TeamCreationDate = "com.k2.microsoft.teams.team.creationdate";
-const TeamDescription = "com.k2.microsoft.teams.team.description";
-const TeamEmail = "com.k2.microsoft.teams.team.email";
-const TeamMailEnabled = "com.k2.microsoft.teams.team.mailenabled";
-const TeamMailNickname = "com.k2.microsoft.teams.team.mailnickname";
-const TeamArchiveStatus = "com.k2.microsoft.teams.team.archivestatus";
-const TeamOperationId = "com.k2.microsoft.teams.team.operationid";
-const TeamOperationType = "com.k2.microsoft.teams.team.operationtype";
-const TeamLastActionDate = "com.k2.microsoft.teams.team.lastactiondate";
-const TeamAttemptsCount = "com.k2.microsoft.teams.team.attemptscount";
-const TeamTargetResourceId = "com.k2.microsoft.teams.team.targetresourceid";
-const TeamTargetResourceLocation = "com.k2.microsoft.teams.team.targetresourcelocation";
-const TeamArchiveError = "com.k2.microsoft.teams.team.archiveerror";
-const TeamUserPrincipalName = "com.k2.microsoft.teams.team.userprincipalname";
-const TeamResourceProvisioningOptions = "com.k2.microsoft.teams.team.resourceprovisioningoptions";
-const TeamIsArchived = "com.k2.microsoft.teams.team.isarchived";
-const TeamIsSuccessful = "com.k2.microsoft.teams.team.issuccessful"
-const TeamRequestStatusUrl = "com.k2.microsoft.teams.team.requeststatusurl";
-const TeamMsAllowCreateUpdateChannels = "com.k2.microsoft.teams.team.msallowcreateupdatechannels";
-const TeamMsAllowDeleteChannels = "com.k2.microsoft.teams.team.msallowdeletechannels";
-const TeamMsAllowAddRemoveApps = "com.k2.microsoft.teams.team.msallowaddremoveapps";
-const TeamMsAllowCreateUpdateRemoveTabs = "com.k2.microsoft.teams.team.msallowcreateupdateremovetabs";
-const TeamMsAllowCreateUpdateRemoveConnectors = "com.k2.microsoft.teams.team.msallowcreateupdateremoveconnectors";
-const TeamGsAllowCreateUpdateChannels = "com.k2.microsoft.teams.team.gsallowcreateupdatechannels";
-const TeamGsAllowDeleteChannels = "com.k2.microsoft.teams.team.gsallowdeletechannels";
-const TeamMsgAllowUserEditMessages = "com.k2.microsoft.teams.team.msgsallowusereditmessages";
-const TeamMsgAllowUserDeleteMessages = "com.k2.microsoft.teams.team.msgsallowuserdeletemessages";
-const TeamMsgAllowOwnerDeleteMessages = "com.k2.microsoft.teams.team.msgsallowownerdeletemessages";
-const TeamMsgAllowTeamMentions = "com.k2.microsoft.teams.team.msgsallowteammentions";
-const TeamMsgAllowChannelMentions = "com.k2.microsoft.teams.team.msgsallowchannelmentions";
-const TeamFsAllowGiphy = "com.k2.microsoft.teams.team.fsallowgiphy";
-const TeamFsAllowStickersAndMemes = "com.k2.microsoft.teams.team.fsallowstickersandmemes";
-const TeamFsAllowCustomMemes = "com.k2.microsoft.teams.team.fsallowcustommemes";
+const TeamId = "id"; //  "com.k2.microsoft.teams.team.id";
+const TeamWeburl = "weburl"; //  "com.k2.microsoft.teams.team.weburl";
+const TeamDisplayName = "displayName"; //  "com.k2.microsoft.teams.team.displayname";
+const TeamCreationDate = "creationDate"; //  "com.k2.microsoft.teams.team.creationdate";
+const TeamDescription = "description"; //  "com.k2.microsoft.teams.team.description";
+const TeamEmail = "email"; //  "com.k2.microsoft.teams.team.email";
+const TeamMailEnabled = "mailEnabled"; //  "com.k2.microsoft.teams.team.mailenabled";
+const TeamMailNickname = "mailNickname"; //  "com.k2.microsoft.teams.team.mailnickname";
+const TeamArchiveStatus = "archiveStatus"; //  "com.k2.microsoft.teams.team.archivestatus";
+const TeamOperationId = "operationId"; //  "com.k2.microsoft.teams.team.operationid";
+const TeamOperationType = "operationType"; //  "com.k2.microsoft.teams.team.operationtype";
+const TeamLastActionDate = "lastActionDate"; //  "com.k2.microsoft.teams.team.lastactiondate";
+const TeamAttemptsCount = "attemptsCount"; //  "com.k2.microsoft.teams.team.attemptscount";
+const TeamTargetResourceId = "targetResourceId"; //  "com.k2.microsoft.teams.team.targetresourceid";
+const TeamTargetResourceLocation = "targetResourceLocation"; //  "com.k2.microsoft.teams.team.targetresourcelocation";
+const TeamArchiveError = "archiveError"; //  "com.k2.microsoft.teams.team.archiveerror";
+const TeamUserPrincipalName = "userPrincipalName"; //  "com.k2.microsoft.teams.team.userprincipalname";
+const TeamResourceProvisioningOptions = "resourceProvisioningOptions"; //  "com.k2.microsoft.teams.team.resourceprovisioningoptions";
+const TeamIsArchived = "isArchived"; //  "com.k2.microsoft.teams.team.isarchived";
+const TeamIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.team.issuccessful"
+const TeamRequestStatusUrl = "requestStatusUrl"; //  "com.k2.microsoft.teams.team.requeststatusurl";
+const TeamMsAllowCreateUpdateChannels = "msAllowCreateUpdateChannels"; //  "com.k2.microsoft.teams.team.msallowcreateupdatechannels";
+const TeamMsAllowDeleteChannels = "msAllowDeleteChannels"; //  "com.k2.microsoft.teams.team.msallowdeletechannels";
+const TeamMsAllowAddRemoveApps = "msAllowAddRemoveApps"; //  "com.k2.microsoft.teams.team.msallowaddremoveapps";
+const TeamMsAllowCreateUpdateRemoveTabs = "msAllowCreateUpdateRemoveTabs"; //  "com.k2.microsoft.teams.team.msallowcreateupdateremovetabs";
+const TeamMsAllowCreateUpdateRemoveConnectors = "msAllowCreateUpdateRemoveConnectors"; //  "com.k2.microsoft.teams.team.msallowcreateupdateremoveconnectors";
+const TeamGsAllowCreateUpdateChannels = "gsAllowCreateUpdateChannels"; //  "com.k2.microsoft.teams.team.gsallowcreateupdatechannels";
+const TeamGsAllowDeleteChannels = "gsAllowDeleteChannels"; //  "com.k2.microsoft.teams.team.gsallowdeletechannels";
+const TeamMsgAllowUserEditMessages = "msgsAllowUserEditMessages"; //  "com.k2.microsoft.teams.team.msgsallowusereditmessages";
+const TeamMsgAllowUserDeleteMessages = "msgsAllowUserDeleteMessages"; //  "com.k2.microsoft.teams.team.msgsallowuserdeletemessages";
+const TeamMsgAllowOwnerDeleteMessages = "msgsAllowOwnerDeleteMessages"; //  "com.k2.microsoft.teams.team.msgsallowownerdeletemessages";
+const TeamMsgAllowTeamMentions = "msgsAllowTeamMentions"; //  "com.k2.microsoft.teams.team.msgsallowteammentions";
+const TeamMsgAllowChannelMentions = "msgsAllowChannelMentions"; //  "com.k2.microsoft.teams.team.msgsallowchannelmentions";
+const TeamFsAllowGiphy = "fsAllowGiphy"; //  "com.k2.microsoft.teams.team.fsallowgiphy";
+const TeamFsAllowStickersAndMemes = "fsAllowStickersAndMemes"; //  "com.k2.microsoft.teams.team.fsallowstickersandmemes";
+const TeamFsAllowCustomMemes = "fsAllowCustomMemes"; //  "com.k2.microsoft.teams.team.fsallowcustommemes";
 
-const TeamGet = "com.k2.microsoft.teams.team.get";
-const TeamCreate = "com.k2.microsoft.teams.team.create";
-const TeamAdd = "com.k2.microsoft.teams.team.add";
-const TeamArchive = "com.k2.microsoft.teams.team.archive";
-const TeamUnarchive = "com.k2.microsoft.teams.team.unarchive";
-const TeamCheckStatus = "com.k2.microsoft.teams.team.checkstatus";
-const TeamAddMember = "com.k2.microsoft.teams.team.addmember";
-const TeamUpdate = "com.k2.microsoft.teams.team.update";
-const TeamClone = "com.k2.microsoft.teams.team.clone";
-const TeamAddOwner = "com.k2.microsoft.teams.team.addowner";
-const TeamList = "com.k2.microsoft.teams.team.list";
-const TeamMyTeamsList = "com.k2.microsoft.teams.team.myteamslist";
+const TeamGet = "get"; //  "com.k2.microsoft.teams.team.get";
+const TeamCreate = "create"; //  "com.k2.microsoft.teams.team.create";
+const TeamAdd = "add"; //  "com.k2.microsoft.teams.team.add";
+const TeamArchive = "archive"; //  "com.k2.microsoft.teams.team.archive";
+const TeamUnarchive = "unarchive"; //  "com.k2.microsoft.teams.team.unarchive";
+const TeamCheckStatus = "checkStatus"; //  "com.k2.microsoft.teams.team.checkstatus";
+const TeamAddMember = "addMember"; //  "com.k2.microsoft.teams.team.addmember";
+const TeamUpdate = "update"; //  "com.k2.microsoft.teams.team.update";
+const TeamClone = "clone"; //  "com.k2.microsoft.teams.team.clone";
+const TeamAddOwner = "addowner"; //  "com.k2.microsoft.teams.team.addowner";
+const TeamList = "list"; //  "com.k2.microsoft.teams.team.list";
+const TeamMyTeamsList = "myTeamsList"; //  "com.k2.microsoft.teams.team.myteamslist";
 
-const TeamArchiveOperationUrl = "com.k2.microsoft.teams.team.archiveoperationurl";
-const TeamAddAsMemberAlso = "com.k2.microsoft.teams.team.addasmemberalso";
-const TeamDisplayNameStartsWith = "com.k2.microsoft.teams.team.displaynamestartswith";
-const TeamUserId = "com.k2.microsoft.teams.team.userid";
+const TeamArchiveOperationUrl = "archiveOperationUrl"; //  "com.k2.microsoft.teams.team.archiveoperationurl";
+const TeamAddAsMemberAlso = "addAsMemberAlso"; //  "com.k2.microsoft.teams.team.addasmemberalso";
+const TeamDisplayNameStartsWith = "displayNameStartsWith"; //  "com.k2.microsoft.teams.team.displaynamestartswith";
+const TeamUserId = "userId"; //  "com.k2.microsoft.teams.team.userid";
 
 //
 // Channel
-const ChannelId = "com.k2.microsoft.teams.channel.id";
-const ChannelDisplayName = "com.k2.microsoft.teams.channel.displayname";
-const ChannelDescription = "com.k2.microsoft.teams.channel.description";
-const ChannelEmail = "com.k2.microsoft.teams.channel.email";
-const ChannelWeburl = "com.k2.microsoft.teams.channel.weburl";
-const ChannelIsSuccessful = "com.k2.microsoft.teams.channel.issuccessful";
-const ChannelTeamId = "com.k2.microsoft.teams.channel.teamid";
-const ChannelMessageSubject = "com.k2.microsoft.teams.channel.message.subject";
-const ChannelMessageBody = "com.k2.microsoft.teams.channel.message.body";
-const ChannelMessageIsImportant = "com.k2.microsoft.teams.channel.message.isimportant";
+const ChannelId = "id"; //  "com.k2.microsoft.teams.channel.id";
+const ChannelDisplayName = "displayName"; //  "com.k2.microsoft.teams.channel.displayname";
+const ChannelDescription = "description"; //  "com.k2.microsoft.teams.channel.description";
+const ChannelEmail = "email"; //  "com.k2.microsoft.teams.channel.email";
+const ChannelWeburl = "weburl"; //  "com.k2.microsoft.teams.channel.weburl";
+const ChannelIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.channel.issuccessful";
+const ChannelTeamId = "teamId"; //  "com.k2.microsoft.teams.channel.teamid";
+const ChannelMessageSubject = "messageSubject"; //  "com.k2.microsoft.teams.channel.message.subject";
+const ChannelMessageBody = "messageBody"; //  "com.k2.microsoft.teams.channel.message.body";
+const ChannelMessageIsImportant = "messageIsImportant"; //  "com.k2.microsoft.teams.channel.message.isimportant";
 
-const ChannelGet = "com.k2.microsoft.teams.channel.get";
-const ChannelList = "com.k2.microsoft.teams.channel.list";
-const ChannelCreate = "com.k2.microsoft.teams.channel.create";
-const ChannelDelete = "com.k2.microsoft.teams.channel.delete";
-const ChannelUpdate = "com.k2.microsoft.teams.channel.update";
-const ChannelSendMessage = "com.k2.microsoft.teams.channel.sendmessage";
+const ChannelGet = "get"; //  "com.k2.microsoft.teams.channel.get";
+const ChannelList = "list"; //  "com.k2.microsoft.teams.channel.list";
+const ChannelCreate = "create"; //  "com.k2.microsoft.teams.channel.create";
+const ChannelDelete = "delete"; //  "com.k2.microsoft.teams.channel.delete";
+const ChannelUpdate = "update"; //  "com.k2.microsoft.teams.channel.update";
+const ChannelSendMessage = "sendMessage"; //  "com.k2.microsoft.teams.channel.sendmessage";
 
 //
 // Tab
-const TabId = "com.k2.microsoft.teams.tab.id";
-const TabDisplayName = "com.k2.microsoft.teams.tab.displayname";
-const TabWeburl = "com.k2.microsoft.teams.tab.weburl";
-const TabConfigEntityId = "com.k2.microsoft.teams.tab.config.entityid";
-const TabConfigContentUrl = "com.k2.microsoft.teams.tab.config.contenturl";
-const TabConfigWebsiteUrl = "com.k2.microsoft.teams.tab.config.websiteurl";
-const TabConfigRemoveUrl = "com.k2.microsoft.teams.tab.config.removeurl";
-const TabTeamsAppAppId = "com.k2.microsoft.teams.tab.teamsapp.appid";
-const TabTeamsAppExternalId = "com.k2.microsoft.teams.tab.teamsapp.externalid";
-const TabTeamsAppAppDisplayName = "com.k2.microsoft.teams.tab.teamsapp.appdisplayname";
-const TabTeamsAppDistMethod = "com.k2.microsoft.teams.tab.teamsapp.distmethod";
-const TabSortOrderIndex = "com.k2.microsoft.teams.tab.sortorderindex";
-const TabIsSuccessful = "com.k2.microsoft.teams.tab.issuccessful";
-const TabTeamId = "com.k2.microsoft.teams.tab.teamid";
-const TabChannelId = "com.k2.microsoft.teams.tab.channelid";
+const TabId = "id"; //  "com.k2.microsoft.teams.tab.id";
+const TabDisplayName = "displayName"; //  "com.k2.microsoft.teams.tab.displayname";
+const TabWeburl = "weburl"; //  "com.k2.microsoft.teams.tab.weburl";
+const TabConfigEntityId = "configEntityId"; //  "com.k2.microsoft.teams.tab.config.entityid";
+const TabConfigContentUrl = "configContentUrl"; //  "com.k2.microsoft.teams.tab.config.contenturl";
+const TabConfigWebsiteUrl = "configWebsiteUrl"; //  "com.k2.microsoft.teams.tab.config.websiteurl";
+const TabConfigRemoveUrl = "configRemoveUrl"; //  "com.k2.microsoft.teams.tab.config.removeurl";
+const TabTeamsAppAppId = "teamsAppAppId"; //  "com.k2.microsoft.teams.tab.teamsapp.appid";
+const TabTeamsAppExternalId = "teamsAppExternalId"; //  "com.k2.microsoft.teams.tab.teamsapp.externalid";
+const TabTeamsAppAppDisplayName = "teamsAppAppDisplayName"; //  "com.k2.microsoft.teams.tab.teamsapp.appdisplayname";
+const TabTeamsAppDistMethod = "teamsAppDistMethod"; //  "com.k2.microsoft.teams.tab.teamsapp.distmethod";
+const TabSortOrderIndex = "sortOrderIndex"; //  "com.k2.microsoft.teams.tab.sortorderindex";
+const TabIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.tab.issuccessful";
+const TabTeamId = "teamId"; //  "com.k2.microsoft.teams.tab.teamid";
+const TabChannelId = "channelId"; //  "com.k2.microsoft.teams.tab.channelid";
 
-const TabGet = "com.k2.microsoft.teams.tab.get";
-const TabList = "com.k2.microsoft.teams.tab.list";
-const TabCreateWordTab = "com.k2.microsoft.teams.tab.createwordtab";
-const TabCreateExcelTab = "com.k2.microsoft.teams.tab.createexceltab";
-const TabCreatePowerpointTab = "com.k2.microsoft.teams.tab.createpowerpointtab";
-const TabCreatePdfTab = "com.k2.microsoft.teams.tab.createpdftab";
-const TabCreateOneNoteTab = "com.k2.microsoft.teams.tab.createonenotetab";
-const TabCreatePlannerTab = "com.k2.microsoft.teams.tab.createplannertab";
-const TabCreateSharePointTab = "com.k2.microsoft.teams.tab.createsharepointtab";
-const TabCreateMsFormsTab = "com.k2.microsoft.teams.tab.createmsformstab";
-const TabCreateMsStreamTab = "com.k2.microsoft.teams.tab.createmsstreamtab";
-const TabCreateWebsiteTab = "com.k2.microsoft.teams.tab.createwebsitetab";
-const TabCreateWikiTab = "com.k2.microsoft.teams.tab.createwikitab";
-const TabCreatePowerBiTab = "com.k2.microsoft.teams.tab.createpowerbitab";
-const TabCreateDocumentLibraryTab = "com.k2.microsoft.teams.tab.createdocumentlibrarytab";
-const TabCreateCustomTab = "com.k2.microsoft.teams.tab.createcustomtab";
-const TabDelete = "com.k2.microsoft.teams.tab.delete";
-const TabUpdate = "com.k2.microsoft.teams.tab.update";
+const TabGet = "get"; //  "com.k2.microsoft.teams.tab.get";
+const TabList = "list"; //  "com.k2.microsoft.teams.tab.list";
+const TabCreateWordTab = "createWordTab"; //  "com.k2.microsoft.teams.tab.createwordtab";
+const TabCreateExcelTab = "createExcelTab"; //  "com.k2.microsoft.teams.tab.createexceltab";
+const TabCreatePowerpointTab = "createPowerpointTab"; //  "com.k2.microsoft.teams.tab.createpowerpointtab";
+const TabCreatePdfTab = "createPdfTab"; //  "com.k2.microsoft.teams.tab.createpdftab";
+const TabCreateOneNoteTab = "createOneNoteTab"; //  "com.k2.microsoft.teams.tab.createonenotetab";
+const TabCreatePlannerTab = "createPlannerTab"; //  "com.k2.microsoft.teams.tab.createplannertab";
+const TabCreateSharePointTab = "creatSsharePointTab"; //  "com.k2.microsoft.teams.tab.createsharepointtab";
+const TabCreateMsFormsTab = "createMsFormsTab"; //  "com.k2.microsoft.teams.tab.createmsformstab";
+const TabCreateMsStreamTab = "createmsStreamTab"; //  "com.k2.microsoft.teams.tab.createmsstreamtab";
+const TabCreateWebsiteTab = "createWebsiteTab"; //  "com.k2.microsoft.teams.tab.createwebsitetab";
+const TabCreateWikiTab = "createWikiTab"; //  "com.k2.microsoft.teams.tab.createwikitab";
+const TabCreatePowerBiTab = "createPowerBiTab"; //  "com.k2.microsoft.teams.tab.createpowerbitab";
+const TabCreateDocumentLibraryTab = "createDocumentLibraryTab"; //  "com.k2.microsoft.teams.tab.createdocumentlibrarytab";
+const TabCreateCustomTab = "createCustomTab"; //  "com.k2.microsoft.teams.tab.createcustomtab";
+const TabDelete = "delete"; //  "com.k2.microsoft.teams.tab.delete";
+const TabUpdate = "update"; //  "com.k2.microsoft.teams.tab.update";
 
 //
 // Apps
-const AppsId = "com.k2.microsoft.teams.apps.id";
-const AppsTeamId = "com.k2.microsoft.teams.apps.teamid";
-const AppsDisplayName = "com.k2.microsoft.teams.apps.displayname";
-const AppsVersion = "com.k2.microsoft.teams.apps.version";
-const AppsTeamAppDefinitionId = "com.k2.microsoft.teams.apps.teamsappdefinitionid";
-const AppsTeamsAppId = "com.k2.microsoft.teams.apps.teamsappid";
+const AppsId = "id"; //  "com.k2.microsoft.teams.apps.id";
+const AppsTeamId = "teamId"; //  "com.k2.microsoft.teams.apps.teamid";
+const AppsDisplayName = "displayName"; //  "com.k2.microsoft.teams.apps.displayname";
+const AppsVersion = "version"; //  "com.k2.microsoft.teams.apps.version";
+const AppsTeamAppDefinitionId = "teamsAppDefinitionId"; //  "com.k2.microsoft.teams.apps.teamsappdefinitionid";
+const AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid";
 
-const AppsList = "com.k2.microsoft.teams.apps.list";
+const AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
 ondescribe = function () {
     postSchema({
-        [Team]: {
+        [Teams]: {
             displayName: "Microsoft Teams",
             description: "A service for integrating with Microsoft Teams.",
             objects: {
