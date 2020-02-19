@@ -1,6 +1,5 @@
-"use strict";
 
-const metadata = {
+metadata = {
     systemName: "CalebTest2",
     displayName: "CalebTest2 Example Broker",
     description: "An example broker"
@@ -142,7 +141,7 @@ const AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid
 const AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
-function ondescribe() {
+async function ondescribe() {
     postSchema({
         [Teams]: {
             displayName: "Microsoft Teams",
@@ -1146,7 +1145,7 @@ function ondescribe() {
         }
     });
 };
-function onexecute(objectName, methodName, parameters, properties) {
+async function onexecute(objectName, methodName, parameters, properties) {
     switch (objectName) {
         case Team:
             onexecuteTeam(methodName, parameters, properties);
