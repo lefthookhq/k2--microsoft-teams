@@ -1,8 +1,8 @@
 import '@k2oss/k2-broker-core';
 
-var metadata = {
-    systemName: "CalebTest2",
-    displayName: "CalebTest2 Example Broker",
+metadata = {
+    systemName: "MSTeamsJSServiceProvider",
+    displayName: "MSTeamsJSServiceProvider",
     description: "An example broker"
 };
 
@@ -10,7 +10,12 @@ var metadata = {
 const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
 const baseUriEndpointBeta = "https://graph.microsoft.com/beta";
 
+
+//
+// Teams
 const Teams = "teams"; // "com.k2.microsoft.teams";
+
+// "objects" off of "com.k2.microsoft.teams"
 const Team = "team"; //  "com.k2.microsoft.teams.team";
 const Channel = "channel"; //  "com.k2.microsoft.teams.channel";
 const Tab = "tab"; //  "com.k2.microsoft.teams.tab";
@@ -142,7 +147,7 @@ const AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid
 const AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
-export async function ondescribe() {
+ondescribe = function () {
     postSchema({
         [Teams]: {
             displayName: "Microsoft Teams",
@@ -1145,8 +1150,9 @@ export async function ondescribe() {
             }
         }
     });
-};
-export async function onexecute(objectName, methodName, parameters, properties) {
+}
+
+onexecute = function (objectName, methodName, parameters, properties) {
     switch (objectName) {
         case Team:
             onexecuteTeam(methodName, parameters, properties);
@@ -1162,17 +1168,18 @@ export async function onexecute(objectName, methodName, parameters, properties) 
             break;
         default: throw new Error("The object " + objectName + " is not supported.");
     }
-};
-// Begin standard JS --
-function onexecuteApp(methodName, parameters, properties) {
+}
+
+function onexecuteApp(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     switch (methodName) {
         case AppsList:
             onexecuteInstalledAppsList(parameters, properties);
             break;
-        default: throw new Error("The method " + methodName + " is not supported.");
+        default: throw new Error("The method " + methodName + " is not supported..");
     }
 }
-function onexecuteTeam(methodName, parameters, properties) {
+
+function onexecuteTeam(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     try {
         parameters[TeamIsSuccessful] = true;
         switch (methodName) {
@@ -1212,7 +1219,7 @@ function onexecuteTeam(methodName, parameters, properties) {
             case TeamCheckStatus:
                 onexecuteTeamCheckStatus(parameters, properties);
                 break;
-            default: throw new Error("The method " + methodName + " is not supported.");
+            default: throw new Error("The method " + methodName + " is not supported..");
         }
     }
     catch (errMsg) {
@@ -1221,7 +1228,8 @@ function onexecuteTeam(methodName, parameters, properties) {
         });
     }
 }
-function onexecuteTab(methodName, parameters, properties) {
+
+function onexecuteTab(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     try {
         parameters[TabIsSuccessful] = true;
         switch (methodName) {
@@ -1279,7 +1287,7 @@ function onexecuteTab(methodName, parameters, properties) {
             case TabCreateCustomTab:
                 onexecuteTabCreate(methodName, parameters, properties);
                 break;
-            default: throw new Error("The method " + methodName + " is not supported.");
+            default: throw new Error("The method " + methodName + " is not supported..");
         }
     }
     catch (errMsg) {
@@ -1288,7 +1296,9 @@ function onexecuteTab(methodName, parameters, properties) {
         });
     }
 }
-function onexecuteTeamGet(parameters, properties) {
+
+function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
+
     try {
         parameters[TeamIsSuccessful] = true;
         // Get Group Details By Group ID
@@ -1315,8 +1325,9 @@ function onexecuteTeamGet(parameters, properties) {
         });
     }
 }
-function onexecuteTeamCreate(parameters, properties) {
-    //Create a Group
+
+function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord) {
+//Create a Group
     CreateGroup(parameters, properties, function (a) {
         properties[TeamId] = parameters[TeamId] = a.id;
 
@@ -1344,28 +1355,32 @@ function onexecuteTeamCreate(parameters, properties) {
         });
     });
 }
-function GetGroupIdByMailNickName(parameters, properties, cb) {
+
+function GetGroupIdByMailNickName(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/groups?$filter=mailNickName%20eq%20'" + String(properties[TeamMailNickname]) + "'";
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function GetGroupDetailsById(parameters, properties, cb) {
+
+function GetGroupDetailsById(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/groups/" + properties[TeamId];
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function GetTeamDetailsByID(parameters, properties, cb) {
+
+function GetTeamDetailsByID(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[TeamId];
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function CreateGroup(parameters, properties, cb) {
+
+function CreateGroup(parameters: SingleRecord, properties: SingleRecord, cb) {
     //Create Body for GROUP POST
     var data = JSON.stringify({
         "description": properties[TeamDescription],
@@ -1381,7 +1396,8 @@ function CreateGroup(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function CreateTeam(parameters, properties, cb) {
+
+function CreateTeam(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "memberSettings": {
             "allowCreateUpdateChannels": true
@@ -1401,7 +1417,8 @@ function CreateTeam(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function ArchiveTeam(parameters, properties, cb) {
+
+function ArchiveTeam(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "shouldSetSpoSiteReadOnlyForMembers": true
     });
@@ -1411,7 +1428,8 @@ function ArchiveTeam(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function UnarchiveTeam(parameters, properties, cb) {
+
+function UnarchiveTeam(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = null;
     var url = baseUriEndpoint + "/teams/" + properties[TeamId] + "/unarchive";
     ExecuteRequest(url, data, "POST", function (responseText) {
@@ -1419,8 +1437,9 @@ function UnarchiveTeam(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function UpdateTeam(parameters, properties, cb) {
-    //ToDo - define properties that has to be updated
+
+function UpdateTeam(parameters: SingleRecord, properties: SingleRecord, cb) {
+    //TODO - define properties that has to be updated
     var data = JSON.stringify({
         "memberSettings": {
             "allowCreateUpdateChannels": properties[TeamMsAllowCreateUpdateChannels],
@@ -1452,7 +1471,8 @@ function UpdateTeam(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function CloneTeam(parameters, properties, cb) {
+
+function CloneTeam(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "displayName": properties[TeamDisplayName],
         "description": properties[TeamDescription],
@@ -1466,14 +1486,16 @@ function CloneTeam(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function GetUser(parameters, properties, cb) {
+
+function GetUser(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/users/" + properties[TeamUserPrincipalName];
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function AddGroupOwner(parameters, properties, cb) {
+
+function AddGroupOwner(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "@odata.id": baseUriEndpoint + "/users/" + parameters[TeamUserId]
     });
@@ -1483,7 +1505,8 @@ function AddGroupOwner(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function AddGroupMembers(parameters, properties, cb) {
+
+function AddGroupMembers(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "@odata.id": baseUriEndpoint + "/directoryObjects/" + parameters[TeamUserId]
     });
@@ -1493,7 +1516,8 @@ function AddGroupMembers(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function ExecuteRequest(url, data, requestType, cb) {
+
+function ExecuteRequest(url: string, data: string, requestType: string, cb) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== 4)
@@ -1538,9 +1562,12 @@ function ExecuteRequest(url, data, requestType, cb) {
     }
     xhr.send(data);
 }
-function CreateAndReturnTeamObject(parameters, properties) {
-    if (String(properties[TeamId]).length > 0)
+
+function CreateAndReturnTeamObject(parameters: SingleRecord, properties: SingleRecord) {
+    if (String(properties[TeamId]).length > 0) {
         parameters[TeamId] = properties[TeamId];
+    }
+
     postResult({
         [TeamId]: parameters[TeamId],
         [TeamDisplayName]: parameters[TeamDisplayName],
@@ -1553,8 +1580,9 @@ function CreateAndReturnTeamObject(parameters, properties) {
         [TeamIsSuccessful]: parameters[TeamIsSuccessful]
     });
 }
-function onexecuteTeamAdd(parameters, properties) {
-    //To Do - Should we make a call to Get Group Details by ID to get the team object details - for returning back to K2 user
+
+function onexecuteTeamAdd(parameters: SingleRecord, properties: SingleRecord) {
+    //TODO - Should we make a call to Get Group Details by ID to get the team object details - for returning back to K2 user
     // Add Team to a group
     CreateTeam(parameters, properties, function (b) {
         parameters[TeamWeburl] = b.webUrl;
@@ -1572,7 +1600,8 @@ function onexecuteTeamAdd(parameters, properties) {
         });
     });
 }
-function onexecuteTeamUpdate(parameters, properties) {
+
+function onexecuteTeamUpdate(parameters: SingleRecord, properties: SingleRecord) {
     UpdateTeam(parameters, properties, function (c) {
         if (c.responseText == null || c.responseText == "" || c.responseText == undefined || c.responseText == "undefined") {
             postResult({
@@ -1582,7 +1611,8 @@ function onexecuteTeamUpdate(parameters, properties) {
         //CreateAndReturnTeamObject(parameters, properties);
     });
 }
-function onexecuteTeamMyTeamsList(parameters, properties) {
+
+function onexecuteTeamMyTeamsList(parameters: SingleRecord, properties: SingleRecord) {
     GetMyTeams(parameters, properties, function (a) {
         console.log(a);
         postResult(a.value.map(x => {
@@ -1595,7 +1625,8 @@ function onexecuteTeamMyTeamsList(parameters, properties) {
         }));
     });
 }
-function onexecuteTeamList(parameters, properties) {
+
+function onexecuteTeamList(parameters: SingleRecord, properties: SingleRecord) {
     GetTeams(parameters, properties, function (a) {
         console.log(a);
         postResult(a.value.map(x => {
@@ -1603,11 +1634,12 @@ function onexecuteTeamList(parameters, properties) {
                 [TeamId]: x.id,
                 [TeamDisplayName]: x.displayName,
                 [TeamResourceProvisioningOptions]: x.resourceProvisioningOptions[0]
-        };
+            };
         }));
     });
 }
-function GetTeams(parameters, properties, cb) {
+
+function GetTeams(parameters: SingleRecord, properties: SingleRecord, cb) {
     if (parameters[TeamDisplayNameStartsWith] == null || parameters[TeamDisplayNameStartsWith] == "")
         var url = baseUriEndpoint + "/groups?$select=id,displayName,resourceProvisioningOptions";
     else
@@ -1617,14 +1649,16 @@ function GetTeams(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function GetMyTeams(parameters, properties, cb) {
+
+function GetMyTeams(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/me/joinedTeams";
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function onexecuteTeamArchive(parameters, properties) {
+
+function onexecuteTeamArchive(parameters: SingleRecord, properties: SingleRecord) {
     ArchiveTeam(parameters, properties, function (b) {
         // CreateAndReturnTeamObject(parameters, properties);
         postResult({
@@ -1634,7 +1668,8 @@ function onexecuteTeamArchive(parameters, properties) {
         });
     });
 }
-function onexecuteTeamUnarchive(parameters, properties) {
+
+function onexecuteTeamUnarchive(parameters: SingleRecord, properties: SingleRecord) {
     UnarchiveTeam(parameters, properties, function (b) {
         CreateAndReturnTeamObject(parameters, properties);
         postResult({
@@ -1644,7 +1679,8 @@ function onexecuteTeamUnarchive(parameters, properties) {
         });
     });
 }
-function CheckArchivalStatus(parameters, properties, cb) {
+
+function CheckArchivalStatus(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = null;
     var url = baseUriEndpoint + "/" + parameters[TeamArchiveOperationUrl];
     ExecuteRequest(url, data, "GET", function (responseText) {
@@ -1652,7 +1688,8 @@ function CheckArchivalStatus(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function onexecuteTeamCheckStatus(parameters, properties) {
+
+function onexecuteTeamCheckStatus(parameters: SingleRecord, properties: SingleRecord) {
     CheckArchivalStatus(parameters, properties, function (b) {
         postResult({
             [TeamOperationId]: b.id,
@@ -1667,7 +1704,8 @@ function onexecuteTeamCheckStatus(parameters, properties) {
         });
     });
 }
-function onexecuteTeamClone(parameters, properties) {
+
+function onexecuteTeamClone(parameters: SingleRecord, properties: SingleRecord) {
     CloneTeam(parameters, properties, function (b) {
         //CreateAndReturnTeamObject(parameters, properties);
         postResult({
@@ -1677,7 +1715,8 @@ function onexecuteTeamClone(parameters, properties) {
         });
     });
 }
-function onexecuteChannel(methodName, parameters, properties) {
+
+function onexecuteChannel(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     parameters[ChannelIsSuccessful] = true;
     switch (methodName) {
         case ChannelGet:
@@ -1701,7 +1740,8 @@ function onexecuteChannel(methodName, parameters, properties) {
         default: throw new Error("The channel method " + methodName + " is not supported...");
     }
 }
-function onexecuteTeamAddMember(parameters, properties) {
+
+function onexecuteTeamAddMember(parameters: SingleRecord, properties: SingleRecord) {
     GetUser(parameters, properties, function (b) {
         parameters[TeamUserPrincipalName] = b.userPrincipalName;
         parameters[TeamUserId] = b.id;
@@ -1715,7 +1755,8 @@ function onexecuteTeamAddMember(parameters, properties) {
         });
     });
 }
-function onexecuteTeamAddOwner(parameters, properties) {
+
+function onexecuteTeamAddOwner(parameters: SingleRecord, properties: SingleRecord) {
     GetUser(parameters, properties, function (b) {
         parameters[TeamUserPrincipalName] = b.userPrincipalName;
         parameters[TeamUserId] = b.id;
@@ -1741,7 +1782,8 @@ function onexecuteTeamAddOwner(parameters, properties) {
         });
     });
 }
-function onexecuteChannelGet(parameters, properties) {
+
+function onexecuteChannelGet(parameters: SingleRecord, properties: SingleRecord) {
     GetChannel(parameters, properties, function (a) {
         parameters[ChannelId] = a.id;
         parameters[ChannelDisplayName] = a.displayName;
@@ -1751,7 +1793,8 @@ function onexecuteChannelGet(parameters, properties) {
         CreateAndReturnChannelObject(parameters, properties);
     });
 }
-function onexecuteChannelList(parameters, properties) {
+
+function onexecuteChannelList(parameters: SingleRecord, properties: SingleRecord) {
     GetChannelList(parameters, properties, function (a) {
         postResult(a.value.map(x => {
             return {
@@ -1763,7 +1806,8 @@ function onexecuteChannelList(parameters, properties) {
         }));
     });
 }
-function onexecuteChannelCreate(parameters, properties) {
+
+function onexecuteChannelCreate(parameters: SingleRecord, properties: SingleRecord) {
     CreateChannel(parameters, properties, function (a) {
         parameters[ChannelId] = a.id;
         parameters[ChannelDisplayName] = a.displayName;
@@ -1773,7 +1817,8 @@ function onexecuteChannelCreate(parameters, properties) {
         CreateAndReturnChannelObject(parameters, properties);
     });
 }
-function onexecuteChannelUpdate(parameters, properties) {
+
+function onexecuteChannelUpdate(parameters: SingleRecord, properties: SingleRecord) {
     UpdateChannel(parameters, properties, function (a) {
         parameters[ChannelId] = a.id;
         parameters[ChannelDisplayName] = a.displayName;
@@ -1786,21 +1831,24 @@ function onexecuteChannelUpdate(parameters, properties) {
         });
     });
 }
-function onexecuteChannelDelete(parameters, properties) {
+
+function onexecuteChannelDelete(parameters: SingleRecord, properties: SingleRecord) {
     DeleteChannel(parameters, properties, function (a) {
         postResult({
             [ChannelIsSuccessful]: true
         });
     });
 }
-function DeleteChannel(parameters, properties, cb) {
+
+function DeleteChannel(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[ChannelTeamId] + "/channels/" + properties[ChannelId];
     ExecuteRequest(url, null, "DELETE", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function CreateChannel(parameters, properties, cb) {
+
+function CreateChannel(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "displayName": properties[ChannelDisplayName],
         "description": properties[ChannelDescription],
@@ -1811,7 +1859,8 @@ function CreateChannel(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function CreateAndReturnChannelObject(parameters, properties) {
+
+function CreateAndReturnChannelObject(parameters: SingleRecord, properties: SingleRecord) {
     var ChannelId = String(parameters[ChannelId]);
     if (ChannelId == null || ChannelId == "undefined" || ChannelId == "" || ChannelId == undefined)
         parameters[ChannelId] = properties[ChannelId];
@@ -1824,21 +1873,24 @@ function CreateAndReturnChannelObject(parameters, properties) {
         [ChannelIsSuccessful]: parameters[ChannelIsSuccessful]
     });
 }
-function GetChannel(parameters, properties, cb) {
+
+function GetChannel(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[ChannelTeamId] + "/channels/" + properties[ChannelId];
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function GetChannelList(parameters, properties, cb) {
+
+function GetChannelList(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[ChannelTeamId] + "/channels?$select=id, displayname, description, email";
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function UpdateChannel(parameters, properties, cb) {
+
+function UpdateChannel(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "displayName": properties[ChannelDisplayName],
         "description": properties[ChannelDescription],
@@ -1850,14 +1902,16 @@ function UpdateChannel(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function onexecuteSendMessage(parameters, properties) {
+
+function onexecuteSendMessage(parameters: SingleRecord, properties: SingleRecord) {
     SendMessage(parameters, properties, function (a) {
         postResult({
             [ChannelIsSuccessful]: true
         });
     });
 }
-function SendMessage(parameters, properties, cb) {
+
+function SendMessage(parameters: SingleRecord, properties: SingleRecord, cb) {
     var importance = properties[ChannelMessageIsImportant] == "true" ? "High" : "Normal";
     var data = JSON.stringify({
         "subject": properties[ChannelMessageSubject],
@@ -1873,7 +1927,9 @@ function SendMessage(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function onexecuteTabGet(parameters, properties) {
+
+
+function onexecuteTabGet(parameters: SingleRecord, properties: SingleRecord) {
     GetTabInformation(parameters, properties, function (a) {
         postResult({
             [TabId]: a.id,
@@ -1891,21 +1947,24 @@ function onexecuteTabGet(parameters, properties) {
         });
     });
 }
-function GetTabInformation(parameters, properties, cb) {
+
+function GetTabInformation(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[TabTeamId] + "/Channels/" + properties[TabChannelId] + "/tabs/" + properties[TabId] + "?$expand=teamsApp";
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function onexecuteTabUpdate(parameters, properties) {
+
+function onexecuteTabUpdate(parameters: SingleRecord, properties: SingleRecord) {
     UpdateTab(parameters, properties, function (a) {
         postResult({
             [TabIsSuccessful]: true
         });
     });
 }
-function UpdateTab(parameters, properties, cb) {
+
+function UpdateTab(parameters: SingleRecord, properties: SingleRecord, cb) {
     var data = JSON.stringify({
         "displayName": properties[TabDisplayName]
     });
@@ -1915,7 +1974,8 @@ function UpdateTab(parameters, properties, cb) {
             cb(responseText);
     });
 }
-function onexecuteTabList(parameters, properties) {
+
+function onexecuteTabList(parameters: SingleRecord, properties: SingleRecord) {
     GetTabList(parameters, properties, function (a) {
         postResult(a.value.map(x => {
             return {
@@ -1926,7 +1986,8 @@ function onexecuteTabList(parameters, properties) {
         }));
     });
 }
-function onexecuteTabCreate(methodName, parameters, properties) {
+
+function onexecuteTabCreate(methodName: string, parameters: SingleRecord, properties: SingleRecord) {
     switch (methodName) {
         case TabCreateWordTab:
             prepareDataAndCreateTab(parameters, properties, getRequestBody("Word", properties));
@@ -1973,7 +2034,9 @@ function onexecuteTabCreate(methodName, parameters, properties) {
         default: throw new Error("The object " + methodName + " is not supported.");
     }
 }
-function prepareDataAndCreateTab(parameters, properties, requestBody) {
+
+
+function prepareDataAndCreateTab(parameters: SingleRecord, properties: SingleRecord, requestBody: string) {
     CreateTab(parameters, properties, requestBody, function (a) {
         // CreateAndReturnChannelObject(parameters, properties);
         postResult({
@@ -1988,14 +2051,16 @@ function prepareDataAndCreateTab(parameters, properties, requestBody) {
         });
     });
 }
-function CreateTab(parameters, properties, data, cb) {
+
+function CreateTab(parameters: SingleRecord, properties: SingleRecord, data: string, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[TabTeamId] + "/channels/" + properties[TabChannelId] + "/tabs";
     ExecuteRequest(url, data, "POST", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function getRequestBody(tabType, properties) {
+
+function getRequestBody(tabType: string, properties) {
     var data;
     switch (tabType) {
         case "Word":
@@ -2086,7 +2151,8 @@ function getRequestBody(tabType, properties) {
     }
     return data;
 }
-function onexecuteTabDelete(parameters, properties) {
+
+function onexecuteTabDelete(parameters: SingleRecord, properties: SingleRecord) {
     DeleteTab(parameters, properties, function (a) {
         if (a == null || a == "") {
             postResult({
@@ -2095,21 +2161,26 @@ function onexecuteTabDelete(parameters, properties) {
         }
     });
 }
-function DeleteTab(parameters, properties, cb) {
+
+function DeleteTab(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[TabTeamId] + "/Channels/" + properties[TabChannelId] + "/tabs/" + properties[TabId];
     ExecuteRequest(url, null, "DELETE", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function GetInstalledAppsList(parameters, properties, cb) {
+
+
+function GetInstalledAppsList(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[AppsTeamId] + "/installedApps?$expand=teamsAppDefinition";
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
 }
-function onexecuteInstalledAppsList(parameters, properties) {
+
+
+function onexecuteInstalledAppsList(parameters: SingleRecord, properties: SingleRecord) {
     GetInstalledAppsList(parameters, properties, function (a) {
         postResult(a.value.map(x => {
             return {
@@ -2122,7 +2193,8 @@ function onexecuteInstalledAppsList(parameters, properties) {
         }));
     });
 }
-function GetTabList(parameters, properties, cb) {
+
+function GetTabList(parameters: SingleRecord, properties: SingleRecord, cb) {
     var url = baseUriEndpoint + "/teams/" + properties[TabTeamId] + "/channels/" + properties[TabChannelId] + "/tabs?$select=id,displayName,webUrl";
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
