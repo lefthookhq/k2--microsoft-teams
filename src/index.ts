@@ -10,1145 +10,1142 @@ metadata = {
 const baseUriEndpoint = "https://graph.microsoft.com/v1.0";
 const baseUriEndpointBeta = "https://graph.microsoft.com/beta";
 
-
 //
 // Teams
-const Teams = "teams"; // "com.k2.microsoft.teams";
+Teams = "teams"; // "com.k2.microsoft.teams";
 
 // "objects" off of "com.k2.microsoft.teams"
-const Team = "team"; //  "com.k2.microsoft.teams.team";
-const Channel = "channel"; //  "com.k2.microsoft.teams.channel";
-const Tab = "tab"; //  "com.k2.microsoft.teams.tab";
-const Apps = "apps"; //  "com.k2.microsoft.teams.apps";
+Team = "team"; //  "com.k2.microsoft.teams.team";
+Channel = "channel"; //  "com.k2.microsoft.teams.channel";
+Tab = "tab"; //  "com.k2.microsoft.teams.tab";
+Apps = "apps"; //  "com.k2.microsoft.teams.apps";
 
 //
 // Team
-const TeamId = "id"; //  "com.k2.microsoft.teams.team.id";
-const TeamWeburl = "weburl"; //  "com.k2.microsoft.teams.team.weburl";
-const TeamDisplayName = "displayName"; //  "com.k2.microsoft.teams.team.displayname";
-const TeamCreationDate = "creationDate"; //  "com.k2.microsoft.teams.team.creationdate";
-const TeamDescription = "description"; //  "com.k2.microsoft.teams.team.description";
-const TeamEmail = "email"; //  "com.k2.microsoft.teams.team.email";
-const TeamMailEnabled = "mailEnabled"; //  "com.k2.microsoft.teams.team.mailenabled";
-const TeamMailNickname = "mailNickname"; //  "com.k2.microsoft.teams.team.mailnickname";
-const TeamArchiveStatus = "archiveStatus"; //  "com.k2.microsoft.teams.team.archivestatus";
-const TeamOperationId = "operationId"; //  "com.k2.microsoft.teams.team.operationid";
-const TeamOperationType = "operationType"; //  "com.k2.microsoft.teams.team.operationtype";
-const TeamLastActionDate = "lastActionDate"; //  "com.k2.microsoft.teams.team.lastactiondate";
-const TeamAttemptsCount = "attemptsCount"; //  "com.k2.microsoft.teams.team.attemptscount";
-const TeamTargetResourceId = "targetResourceId"; //  "com.k2.microsoft.teams.team.targetresourceid";
-const TeamTargetResourceLocation = "targetResourceLocation"; //  "com.k2.microsoft.teams.team.targetresourcelocation";
-const TeamArchiveError = "archiveError"; //  "com.k2.microsoft.teams.team.archiveerror";
-const TeamUserPrincipalName = "userPrincipalName"; //  "com.k2.microsoft.teams.team.userprincipalname";
-const TeamResourceProvisioningOptions = "resourceProvisioningOptions"; //  "com.k2.microsoft.teams.team.resourceprovisioningoptions";
-const TeamIsArchived = "isArchived"; //  "com.k2.microsoft.teams.team.isarchived";
-const TeamIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.team.issuccessful"
-const TeamRequestStatusUrl = "requestStatusUrl"; //  "com.k2.microsoft.teams.team.requeststatusurl";
-const TeamMsAllowCreateUpdateChannels = "msAllowCreateUpdateChannels"; //  "com.k2.microsoft.teams.team.msallowcreateupdatechannels";
-const TeamMsAllowDeleteChannels = "msAllowDeleteChannels"; //  "com.k2.microsoft.teams.team.msallowdeletechannels";
-const TeamMsAllowAddRemoveApps = "msAllowAddRemoveApps"; //  "com.k2.microsoft.teams.team.msallowaddremoveapps";
-const TeamMsAllowCreateUpdateRemoveTabs = "msAllowCreateUpdateRemoveTabs"; //  "com.k2.microsoft.teams.team.msallowcreateupdateremovetabs";
-const TeamMsAllowCreateUpdateRemoveConnectors = "msAllowCreateUpdateRemoveConnectors"; //  "com.k2.microsoft.teams.team.msallowcreateupdateremoveconnectors";
-const TeamGsAllowCreateUpdateChannels = "gsAllowCreateUpdateChannels"; //  "com.k2.microsoft.teams.team.gsallowcreateupdatechannels";
-const TeamGsAllowDeleteChannels = "gsAllowDeleteChannels"; //  "com.k2.microsoft.teams.team.gsallowdeletechannels";
-const TeamMsgAllowUserEditMessages = "msgsAllowUserEditMessages"; //  "com.k2.microsoft.teams.team.msgsallowusereditmessages";
-const TeamMsgAllowUserDeleteMessages = "msgsAllowUserDeleteMessages"; //  "com.k2.microsoft.teams.team.msgsallowuserdeletemessages";
-const TeamMsgAllowOwnerDeleteMessages = "msgsAllowOwnerDeleteMessages"; //  "com.k2.microsoft.teams.team.msgsallowownerdeletemessages";
-const TeamMsgAllowTeamMentions = "msgsAllowTeamMentions"; //  "com.k2.microsoft.teams.team.msgsallowteammentions";
-const TeamMsgAllowChannelMentions = "msgsAllowChannelMentions"; //  "com.k2.microsoft.teams.team.msgsallowchannelmentions";
-const TeamFsAllowGiphy = "fsAllowGiphy"; //  "com.k2.microsoft.teams.team.fsallowgiphy";
-const TeamFsAllowStickersAndMemes = "fsAllowStickersAndMemes"; //  "com.k2.microsoft.teams.team.fsallowstickersandmemes";
-const TeamFsAllowCustomMemes = "fsAllowCustomMemes"; //  "com.k2.microsoft.teams.team.fsallowcustommemes";
+TeamId = "id"; //  "com.k2.microsoft.teams.team.id";
+TeamWeburl = "weburl"; //  "com.k2.microsoft.teams.team.weburl";
+TeamDisplayName = "displayName"; //  "com.k2.microsoft.teams.team.displayname";
+TeamCreationDate = "creationDate"; //  "com.k2.microsoft.teams.team.creationdate";
+TeamDescription = "description"; //  "com.k2.microsoft.teams.team.description";
+TeamEmail = "email"; //  "com.k2.microsoft.teams.team.email";
+TeamMailEnabled = "mailEnabled"; //  "com.k2.microsoft.teams.team.mailenabled";
+TeamMailNickname = "mailNickname"; //  "com.k2.microsoft.teams.team.mailnickname";
+TeamArchiveStatus = "archiveStatus"; //  "com.k2.microsoft.teams.team.archivestatus";
+TeamOperationId = "operationId"; //  "com.k2.microsoft.teams.team.operationid";
+TeamOperationType = "operationType"; //  "com.k2.microsoft.teams.team.operationtype";
+TeamLastActionDate = "lastActionDate"; //  "com.k2.microsoft.teams.team.lastactiondate";
+TeamAttemptsCount = "attemptsCount"; //  "com.k2.microsoft.teams.team.attemptscount";
+TeamTargetResourceId = "targetResourceId"; //  "com.k2.microsoft.teams.team.targetresourceid";
+TeamTargetResourceLocation = "targetResourceLocation"; //  "com.k2.microsoft.teams.team.targetresourcelocation";
+TeamArchiveError = "archiveError"; //  "com.k2.microsoft.teams.team.archiveerror";
+TeamUserPrincipalName = "userPrincipalName"; //  "com.k2.microsoft.teams.team.userprincipalname";
+TeamResourceProvisioningOptions = "resourceProvisioningOptions"; //  "com.k2.microsoft.teams.team.resourceprovisioningoptions";
+TeamIsArchived = "isArchived"; //  "com.k2.microsoft.teams.team.isarchived";
+TeamIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.team.issuccessful"
+TeamRequestStatusUrl = "requestStatusUrl"; //  "com.k2.microsoft.teams.team.requeststatusurl";
+TeamMsAllowCreateUpdateChannels = "msAllowCreateUpdateChannels"; //  "com.k2.microsoft.teams.team.msallowcreateupdatechannels";
+TeamMsAllowDeleteChannels = "msAllowDeleteChannels"; //  "com.k2.microsoft.teams.team.msallowdeletechannels";
+TeamMsAllowAddRemoveApps = "msAllowAddRemoveApps"; //  "com.k2.microsoft.teams.team.msallowaddremoveapps";
+TeamMsAllowCreateUpdateRemoveTabs = "msAllowCreateUpdateRemoveTabs"; //  "com.k2.microsoft.teams.team.msallowcreateupdateremovetabs";
+TeamMsAllowCreateUpdateRemoveConnectors = "msAllowCreateUpdateRemoveConnectors"; //  "com.k2.microsoft.teams.team.msallowcreateupdateremoveconnectors";
+TeamGsAllowCreateUpdateChannels = "gsAllowCreateUpdateChannels"; //  "com.k2.microsoft.teams.team.gsallowcreateupdatechannels";
+TeamGsAllowDeleteChannels = "gsAllowDeleteChannels"; //  "com.k2.microsoft.teams.team.gsallowdeletechannels";
+TeamMsgAllowUserEditMessages = "msgsAllowUserEditMessages"; //  "com.k2.microsoft.teams.team.msgsallowusereditmessages";
+TeamMsgAllowUserDeleteMessages = "msgsAllowUserDeleteMessages"; //  "com.k2.microsoft.teams.team.msgsallowuserdeletemessages";
+TeamMsgAllowOwnerDeleteMessages = "msgsAllowOwnerDeleteMessages"; //  "com.k2.microsoft.teams.team.msgsallowownerdeletemessages";
+TeamMsgAllowTeamMentions = "msgsAllowTeamMentions"; //  "com.k2.microsoft.teams.team.msgsallowteammentions";
+TeamMsgAllowChannelMentions = "msgsAllowChannelMentions"; //  "com.k2.microsoft.teams.team.msgsallowchannelmentions";
+TeamFsAllowGiphy = "fsAllowGiphy"; //  "com.k2.microsoft.teams.team.fsallowgiphy";
+TeamFsAllowStickersAndMemes = "fsAllowStickersAndMemes"; //  "com.k2.microsoft.teams.team.fsallowstickersandmemes";
+TeamFsAllowCustomMemes = "fsAllowCustomMemes"; //  "com.k2.microsoft.teams.team.fsallowcustommemes";
 
-const TeamGet = "get"; //  "com.k2.microsoft.teams.team.get";
-const TeamCreate = "create"; //  "com.k2.microsoft.teams.team.create";
-const TeamAdd = "add"; //  "com.k2.microsoft.teams.team.add";
-const TeamArchive = "archive"; //  "com.k2.microsoft.teams.team.archive";
-const TeamUnarchive = "unarchive"; //  "com.k2.microsoft.teams.team.unarchive";
-const TeamCheckStatus = "checkStatus"; //  "com.k2.microsoft.teams.team.checkstatus";
-const TeamAddMember = "addMember"; //  "com.k2.microsoft.teams.team.addmember";
-const TeamUpdate = "update"; //  "com.k2.microsoft.teams.team.update";
-const TeamClone = "clone"; //  "com.k2.microsoft.teams.team.clone";
-const TeamAddOwner = "addowner"; //  "com.k2.microsoft.teams.team.addowner";
-const TeamList = "list"; //  "com.k2.microsoft.teams.team.list";
-const TeamMyTeamsList = "myTeamsList"; //  "com.k2.microsoft.teams.team.myteamslist";
+TeamGet = "get"; //  "com.k2.microsoft.teams.team.get";
+TeamCreate = "create"; //  "com.k2.microsoft.teams.team.create";
+TeamAdd = "add"; //  "com.k2.microsoft.teams.team.add";
+TeamArchive = "archive"; //  "com.k2.microsoft.teams.team.archive";
+TeamUnarchive = "unarchive"; //  "com.k2.microsoft.teams.team.unarchive";
+TeamCheckStatus = "checkStatus"; //  "com.k2.microsoft.teams.team.checkstatus";
+TeamAddMember = "addMember"; //  "com.k2.microsoft.teams.team.addmember";
+TeamUpdate = "update"; //  "com.k2.microsoft.teams.team.update";
+TeamClone = "clone"; //  "com.k2.microsoft.teams.team.clone";
+TeamAddOwner = "addowner"; //  "com.k2.microsoft.teams.team.addowner";
+TeamList = "list"; //  "com.k2.microsoft.teams.team.list";
+TeamMyTeamsList = "myTeamsList"; //  "com.k2.microsoft.teams.team.myteamslist";
 
-const TeamArchiveOperationUrl = "archiveOperationUrl"; //  "com.k2.microsoft.teams.team.archiveoperationurl";
-const TeamAddAsMemberAlso = "addAsMemberAlso"; //  "com.k2.microsoft.teams.team.addasmemberalso";
-const TeamDisplayNameStartsWith = "displayNameStartsWith"; //  "com.k2.microsoft.teams.team.displaynamestartswith";
-const TeamUserId = "userId"; //  "com.k2.microsoft.teams.team.userid";
+TeamArchiveOperationUrl = "archiveOperationUrl"; //  "com.k2.microsoft.teams.team.archiveoperationurl";
+TeamAddAsMemberAlso = "addAsMemberAlso"; //  "com.k2.microsoft.teams.team.addasmemberalso";
+TeamDisplayNameStartsWith = "displayNameStartsWith"; //  "com.k2.microsoft.teams.team.displaynamestartswith";
+TeamUserId = "userId"; //  "com.k2.microsoft.teams.team.userid";
 
 //
 // Channel
-const ChannelId = "id"; //  "com.k2.microsoft.teams.channel.id";
-const ChannelDisplayName = "displayName"; //  "com.k2.microsoft.teams.channel.displayname";
-const ChannelDescription = "description"; //  "com.k2.microsoft.teams.channel.description";
-const ChannelEmail = "email"; //  "com.k2.microsoft.teams.channel.email";
-const ChannelWeburl = "weburl"; //  "com.k2.microsoft.teams.channel.weburl";
-const ChannelIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.channel.issuccessful";
-const ChannelTeamId = "teamId"; //  "com.k2.microsoft.teams.channel.teamid";
-const ChannelMessageSubject = "messageSubject"; //  "com.k2.microsoft.teams.channel.message.subject";
-const ChannelMessageBody = "messageBody"; //  "com.k2.microsoft.teams.channel.message.body";
-const ChannelMessageIsImportant = "messageIsImportant"; //  "com.k2.microsoft.teams.channel.message.isimportant";
+ChannelId = "id"; //  "com.k2.microsoft.teams.channel.id";
+ChannelDisplayName = "displayName"; //  "com.k2.microsoft.teams.channel.displayname";
+ChannelDescription = "description"; //  "com.k2.microsoft.teams.channel.description";
+ChannelEmail = "email"; //  "com.k2.microsoft.teams.channel.email";
+ChannelWeburl = "weburl"; //  "com.k2.microsoft.teams.channel.weburl";
+ChannelIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.channel.issuccessful";
+ChannelTeamId = "teamId"; //  "com.k2.microsoft.teams.channel.teamid";
+ChannelMessageSubject = "messageSubject"; //  "com.k2.microsoft.teams.channel.message.subject";
+ChannelMessageBody = "messageBody"; //  "com.k2.microsoft.teams.channel.message.body";
+ChannelMessageIsImportant = "messageIsImportant"; //  "com.k2.microsoft.teams.channel.message.isimportant";
 
-const ChannelGet = "get"; //  "com.k2.microsoft.teams.channel.get";
-const ChannelList = "list"; //  "com.k2.microsoft.teams.channel.list";
-const ChannelCreate = "create"; //  "com.k2.microsoft.teams.channel.create";
-const ChannelDelete = "delete"; //  "com.k2.microsoft.teams.channel.delete";
-const ChannelUpdate = "update"; //  "com.k2.microsoft.teams.channel.update";
-const ChannelSendMessage = "sendMessage"; //  "com.k2.microsoft.teams.channel.sendmessage";
+ChannelGet = "get"; //  "com.k2.microsoft.teams.channel.get";
+ChannelList = "list"; //  "com.k2.microsoft.teams.channel.list";
+ChannelCreate = "create"; //  "com.k2.microsoft.teams.channel.create";
+ChannelDelete = "delete"; //  "com.k2.microsoft.teams.channel.delete";
+ChannelUpdate = "update"; //  "com.k2.microsoft.teams.channel.update";
+ChannelSendMessage = "sendMessage"; //  "com.k2.microsoft.teams.channel.sendmessage";
 
 //
 // Tab
-const TabId = "id"; //  "com.k2.microsoft.teams.tab.id";
-const TabDisplayName = "displayName"; //  "com.k2.microsoft.teams.tab.displayname";
-const TabWeburl = "weburl"; //  "com.k2.microsoft.teams.tab.weburl";
-const TabConfigEntityId = "configEntityId"; //  "com.k2.microsoft.teams.tab.config.entityid";
-const TabConfigContentUrl = "configContentUrl"; //  "com.k2.microsoft.teams.tab.config.contenturl";
-const TabConfigWebsiteUrl = "configWebsiteUrl"; //  "com.k2.microsoft.teams.tab.config.websiteurl";
-const TabConfigRemoveUrl = "configRemoveUrl"; //  "com.k2.microsoft.teams.tab.config.removeurl";
-const TabTeamsAppAppId = "teamsAppAppId"; //  "com.k2.microsoft.teams.tab.teamsapp.appid";
-const TabTeamsAppExternalId = "teamsAppExternalId"; //  "com.k2.microsoft.teams.tab.teamsapp.externalid";
-const TabTeamsAppAppDisplayName = "teamsAppAppDisplayName"; //  "com.k2.microsoft.teams.tab.teamsapp.appdisplayname";
-const TabTeamsAppDistMethod = "teamsAppDistMethod"; //  "com.k2.microsoft.teams.tab.teamsapp.distmethod";
-const TabSortOrderIndex = "sortOrderIndex"; //  "com.k2.microsoft.teams.tab.sortorderindex";
-const TabIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.tab.issuccessful";
-const TabTeamId = "teamId"; //  "com.k2.microsoft.teams.tab.teamid";
-const TabChannelId = "channelId"; //  "com.k2.microsoft.teams.tab.channelid";
+TabId = "id"; //  "com.k2.microsoft.teams.tab.id";
+TabDisplayName = "displayName"; //  "com.k2.microsoft.teams.tab.displayname";
+TabWeburl = "weburl"; //  "com.k2.microsoft.teams.tab.weburl";
+TabConfigEntityId = "configEntityId"; //  "com.k2.microsoft.teams.tab.config.entityid";
+TabConfigContentUrl = "configContentUrl"; //  "com.k2.microsoft.teams.tab.config.contenturl";
+TabConfigWebsiteUrl = "configWebsiteUrl"; //  "com.k2.microsoft.teams.tab.config.websiteurl";
+TabConfigRemoveUrl = "configRemoveUrl"; //  "com.k2.microsoft.teams.tab.config.removeurl";
+TabTeamsAppAppId = "teamsAppAppId"; //  "com.k2.microsoft.teams.tab.teamsapp.appid";
+TabTeamsAppExternalId = "teamsAppExternalId"; //  "com.k2.microsoft.teams.tab.teamsapp.externalid";
+TabTeamsAppAppDisplayName = "teamsAppAppDisplayName"; //  "com.k2.microsoft.teams.tab.teamsapp.appdisplayname";
+TabTeamsAppDistMethod = "teamsAppDistMethod"; //  "com.k2.microsoft.teams.tab.teamsapp.distmethod";
+TabSortOrderIndex = "sortOrderIndex"; //  "com.k2.microsoft.teams.tab.sortorderindex";
+TabIsSuccessful = "isSuccessful"; //  "com.k2.microsoft.teams.tab.issuccessful";
+TabTeamId = "teamId"; //  "com.k2.microsoft.teams.tab.teamid";
+TabChannelId = "channelId"; //  "com.k2.microsoft.teams.tab.channelid";
 
-const TabGet = "get"; //  "com.k2.microsoft.teams.tab.get";
-const TabList = "list"; //  "com.k2.microsoft.teams.tab.list";
-const TabCreateWordTab = "createWordTab"; //  "com.k2.microsoft.teams.tab.createwordtab";
-const TabCreateExcelTab = "createExcelTab"; //  "com.k2.microsoft.teams.tab.createexceltab";
-const TabCreatePowerpointTab = "createPowerpointTab"; //  "com.k2.microsoft.teams.tab.createpowerpointtab";
-const TabCreatePdfTab = "createPdfTab"; //  "com.k2.microsoft.teams.tab.createpdftab";
-const TabCreateOneNoteTab = "createOneNoteTab"; //  "com.k2.microsoft.teams.tab.createonenotetab";
-const TabCreatePlannerTab = "createPlannerTab"; //  "com.k2.microsoft.teams.tab.createplannertab";
-const TabCreateSharePointTab = "creatSsharePointTab"; //  "com.k2.microsoft.teams.tab.createsharepointtab";
-const TabCreateMsFormsTab = "createMsFormsTab"; //  "com.k2.microsoft.teams.tab.createmsformstab";
-const TabCreateMsStreamTab = "createmsStreamTab"; //  "com.k2.microsoft.teams.tab.createmsstreamtab";
-const TabCreateWebsiteTab = "createWebsiteTab"; //  "com.k2.microsoft.teams.tab.createwebsitetab";
-const TabCreateWikiTab = "createWikiTab"; //  "com.k2.microsoft.teams.tab.createwikitab";
-const TabCreatePowerBiTab = "createPowerBiTab"; //  "com.k2.microsoft.teams.tab.createpowerbitab";
-const TabCreateDocumentLibraryTab = "createDocumentLibraryTab"; //  "com.k2.microsoft.teams.tab.createdocumentlibrarytab";
-const TabCreateCustomTab = "createCustomTab"; //  "com.k2.microsoft.teams.tab.createcustomtab";
-const TabDelete = "delete"; //  "com.k2.microsoft.teams.tab.delete";
-const TabUpdate = "update"; //  "com.k2.microsoft.teams.tab.update";
+TabGet = "get"; //  "com.k2.microsoft.teams.tab.get";
+TabList = "list"; //  "com.k2.microsoft.teams.tab.list";
+TabCreateWordTab = "createWordTab"; //  "com.k2.microsoft.teams.tab.createwordtab";
+TabCreateExcelTab = "createExcelTab"; //  "com.k2.microsoft.teams.tab.createexceltab";
+TabCreatePowerpointTab = "createPowerpointTab"; //  "com.k2.microsoft.teams.tab.createpowerpointtab";
+TabCreatePdfTab = "createPdfTab"; //  "com.k2.microsoft.teams.tab.createpdftab";
+TabCreateOneNoteTab = "createOneNoteTab"; //  "com.k2.microsoft.teams.tab.createonenotetab";
+TabCreatePlannerTab = "createPlannerTab"; //  "com.k2.microsoft.teams.tab.createplannertab";
+TabCreateSharePointTab = "creatSsharePointTab"; //  "com.k2.microsoft.teams.tab.createsharepointtab";
+TabCreateMsFormsTab = "createMsFormsTab"; //  "com.k2.microsoft.teams.tab.createmsformstab";
+TabCreateMsStreamTab = "createmsStreamTab"; //  "com.k2.microsoft.teams.tab.createmsstreamtab";
+TabCreateWebsiteTab = "createWebsiteTab"; //  "com.k2.microsoft.teams.tab.createwebsitetab";
+TabCreateWikiTab = "createWikiTab"; //  "com.k2.microsoft.teams.tab.createwikitab";
+TabCreatePowerBiTab = "createPowerBiTab"; //  "com.k2.microsoft.teams.tab.createpowerbitab";
+TabCreateDocumentLibraryTab = "createDocumentLibraryTab"; //  "com.k2.microsoft.teams.tab.createdocumentlibrarytab";
+TabCreateCustomTab = "createCustomTab"; //  "com.k2.microsoft.teams.tab.createcustomtab";
+TabDelete = "delete"; //  "com.k2.microsoft.teams.tab.delete";
+TabUpdate = "update"; //  "com.k2.microsoft.teams.tab.update";
 
 //
 // Apps
-const AppsId = "id"; //  "com.k2.microsoft.teams.apps.id";
-const AppsTeamId = "teamId"; //  "com.k2.microsoft.teams.apps.teamid";
-const AppsDisplayName = "displayName"; //  "com.k2.microsoft.teams.apps.displayname";
-const AppsVersion = "version"; //  "com.k2.microsoft.teams.apps.version";
-const AppsTeamAppDefinitionId = "teamsAppDefinitionId"; //  "com.k2.microsoft.teams.apps.teamsappdefinitionid";
-const AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid";
+AppsId = "id"; //  "com.k2.microsoft.teams.apps.id";
+AppsTeamId = "teamId"; //  "com.k2.microsoft.teams.apps.teamid";
+AppsDisplayName = "displayName"; //  "com.k2.microsoft.teams.apps.displayname";
+AppsVersion = "version"; //  "com.k2.microsoft.teams.apps.version";
+AppsTeamAppDefinitionId = "teamsAppDefinitionId"; //  "com.k2.microsoft.teams.apps.teamsappdefinitionid";
+AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid";
 
-const AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
+AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
-ondescribe = function () {
+ondescribe = async function(): Promise<void> {
     postSchema({
-        [Teams]: {
-            displayName: "Microsoft Teams",
-            description: "A service for integrating with Microsoft Teams.",
-            objects: {
-                [Team]: {
-                    displayName: "Team",
-                    description: "Team",
-                    properties: {
-                        [TeamId]: {
-                            displayName: "Team Id",
-                            type: "string"
-                        },
-                        [TeamWeburl]: {
-                            displayName: "Web Url",
-                            type: "string"
-                        },
-                        [TeamDisplayName]: {
-                            displayName: "Display Name",
-                            type: "string"
-                        },
-                        [TeamCreationDate]: {
-                            displayName: "Created On",
-                            type: "dateTime"
-                        },
-                        [TeamDescription]: {
-                            displayName: "Description",
-                            type: "string"
-                        },
-                        [TeamEmail]: {
-                            displayName: "Email",
-                            type: "string"
-                        },
-                        [TeamMailEnabled]: {
-                            displayName: "Mail Enabled",
-                            type: "boolean"
-                        },
-                        [TeamMailNickname]: {
-                            displayName: "Mail Nick Name",
-                            type: "string"
-                        },
-                        [TeamArchiveStatus]: {
-                            displayName: "Archive Status",
-                            type: "string"
-                        },
-                        [TeamOperationId]: {
-                            displayName: "Operation Id",
-                            type: "string"
-                        },
-                        [TeamOperationType]: {
-                            displayName: "Operation Type",
-                            type: "string"
-                        },
-                        [TeamLastActionDate]: {
-                            displayName: "Last Action Date",
-                            type: "dateTime"
-                        },
-                        [TeamAttemptsCount]: {
-                            displayName: "Attempts Count",
-                            type: "string"
-                        },
-                        [TeamTargetResourceId]: {
-                            displayName: "Target Resource Id",
-                            type: "string"
-                        },
-                        [TeamTargetResourceLocation]: {
-                            displayName: "Target Resource Location",
-                            type: "string"
-                        },
-                        [TeamArchiveError]: {
-                            displayName: "Error",
-                            type: "string"
-                        },
-                        [TeamUserPrincipalName]: {
-                            displayName: "User Principal Name",
-                            type: "string"
-                        },
-                        [TeamResourceProvisioningOptions]: {
-                            displayName: "Resource Provisioning Options",
-                            type: "string"
-                        },
-                        [TeamIsArchived]: {
-                            displayName: "Is Archived",
-                            type: "boolean"
-                        },
-                        [TeamIsSuccessful]: {
-                            displayName: "Is Successful",
-                            type: "boolean"
-                        },
-                        [TeamRequestStatusUrl]: {
-                            displayName: "Request Status Url",
-                            type: "boolean"
-                        },
-                        [TeamMsAllowCreateUpdateChannels]: {
-                            displayName: "Allow create/update channels to members",
-                            type: "boolean"
-                        },
-                        [TeamMsAllowDeleteChannels]: {
-                            displayName: "Allow delete channels to members",
-                            type: "boolean"
-                        },
-                        [TeamMsAllowAddRemoveApps]: {
-                            displayName: "Allow add/remove apps to members",
-                            type: "boolean"
-                        },
-                        [TeamMsAllowCreateUpdateRemoveTabs]: {
-                            displayName: "Allow create/update/remove tabs to members",
-                            type: "boolean"
-                        },
-                        [TeamMsAllowCreateUpdateRemoveConnectors]: {
-                            displayName: "Allow create/update/remove connectors to members",
-                            type: "boolean"
-                        },
-                        [TeamGsAllowCreateUpdateChannels]: {
-                            displayName: "Allow create/update channels to guests",
-                            type: "boolean"
-                        },
-                        [TeamGsAllowDeleteChannels]: {
-                            displayName: "Allow delete channels to guests",
-                            type: "boolean"
-                        },
-                        [TeamMsgAllowUserEditMessages]: {
-                            displayName: "Allow user to edit messages",
-                            type: "boolean"
-                        },
-                        [TeamMsgAllowUserDeleteMessages]: {
-                            displayName: "Allow user to delete messages",
-                            type: "boolean"
-                        },
-                        [TeamMsgAllowOwnerDeleteMessages]: {
-                            displayName: "Allow owner to delete messages",
-                            type: "boolean"
-                        },
-                        [TeamMsgAllowTeamMentions]: {
-                            displayName: "Allow team mentions",
-                            type: "boolean"
-                        },
-                        [TeamMsgAllowChannelMentions]: {
-                            displayName: "Allow channel mentions",
-                            type: "boolean"
-                        },
-                        [TeamFsAllowGiphy]: {
-                            displayName: "Allow Giphy",
-                            type: "boolean"
-                        },
-                        [TeamFsAllowStickersAndMemes]: {
-                            displayName: "Allow stickers and memes",
-                            type: "boolean"
-                        },
-                        [TeamFsAllowCustomMemes]: {
-                            displayName: "Allow custom memes",
-                            type: "boolean"
-                        }
+
+        objects: {
+            [Team]: {
+                displayName: "Team",
+                description: "Team",
+                properties: {
+                    [TeamId]: {
+                        displayName: "Team Id",
+                        type: "string"
                     },
-                    methods: {
-                        [TeamGet]: {
-                            displayName: "Get",
-                            type: "read",
-                            inputs: [TeamId],
-                            requiredInputs: [TeamId],
-                            outputs: [TeamId,
-                                TeamDisplayName,
-                                TeamCreationDate,
-                                TeamDescription,
-                                TeamEmail,
-                                TeamMailEnabled,
-                                TeamMailNickname,
-                                TeamWeburl,
-                                TeamIsSuccessful
-                            ]
-                        },
-                        [TeamCreate]: {
-                            displayName: "Create",
-                            description: "Creates a new group and adds a team to the group",
-                            type: "create",
-                            inputs: [TeamDisplayName,
-                                TeamDescription,
-                                TeamMailEnabled,
-                                TeamMailNickname,
-                                TeamUserPrincipalName
-                            ],
-                            requiredInputs: [TeamDisplayName],
-                            outputs: [TeamId,
-                                TeamDisplayName,
-                                TeamCreationDate,
-                                TeamDescription,
-                                TeamEmail,
-                                TeamMailEnabled,
-                                TeamMailNickname,
-                                TeamWeburl,
-                                TeamIsSuccessful
-                            ]
-                        },
-                        [TeamAdd]: {
-                            displayName: "Add a team to Existing Group",
-                            description: "Add a team to an already existing AAD Group",
-                            type: "create",
-                            inputs: [TeamId,
-                                TeamUserPrincipalName
-                            ],
-                            outputs: [TeamId,
-                                TeamDisplayName,
-                                TeamCreationDate,
-                                TeamDescription,
-                                TeamEmail,
-                                TeamMailEnabled,
-                                TeamMailNickname,
-                                TeamWeburl,
-                                TeamIsSuccessful
-                            ]
-                        },
-                        [TeamArchive]: {
-                            displayName: "Archive",
-                            description: "Archive Team",
-                            type: "execute",
-                            inputs: [TeamId],
-                            requiredInputs: [TeamId],
-                            outputs: [TeamId,
-                                TeamRequestStatusUrl,
-                                TeamIsSuccessful
-                            ]
-                        },
-                        [TeamUnarchive]: {
-                            displayName: "Unarchive",
-                            description: "Unarchive Team",
-                            type: "execute",
-                            inputs: [TeamId],
-                            requiredInputs: [TeamId],
-                            outputs: [TeamId,
-                                TeamRequestStatusUrl,
-                                TeamIsSuccessful
-                            ]
-                        },
-                        [TeamCheckStatus]: {
-                            displayName: "Check Archival Status",
-                            description: "Check the stauts of an archival job.",
-                            type: "execute",
-                            parameters: {
-                                [TeamArchiveOperationUrl]: {
-                                    displayName: "Archive/Unarchive operation URL",
-                                    type: "string"
-                                }
-                            },
-                            requiredParameters: [TeamArchiveOperationUrl],
-                            outputs: [TeamOperationId,
-                                TeamOperationType,
-                                TeamCreationDate,
-                                TeamArchiveStatus,
-                                TeamLastActionDate,
-                                TeamAttemptsCount,
-                                TeamTargetResourceId,
-                                TeamTargetResourceLocation,
-                                TeamArchiveError
-                            ]
-                        },
-                        [TeamAddMember]: {
-                            displayName: "Add Member",
-                            description: "Add member to a team/group",
-                            type: "create",
-                            inputs: [TeamId,
-                                TeamUserPrincipalName
-                            ],
-                            requiredInputs: [TeamId,
-                                TeamUserPrincipalName
-                            ],
-                            outputs: [TeamIsSuccessful
-                            ]
-                        },
-                        [TeamUpdate]: {
-                            displayName: "Update",
-                            description: "Updates a team settings",
-                            type: "update",
-                            inputs: [TeamId,
-                                TeamMsAllowCreateUpdateChannels,
-                                TeamMsAllowDeleteChannels,
-                                TeamMsAllowAddRemoveApps,
-                                TeamMsAllowCreateUpdateRemoveTabs,
-                                TeamMsAllowCreateUpdateRemoveConnectors,
-                                TeamGsAllowCreateUpdateChannels,
-                                TeamGsAllowDeleteChannels,
-                                TeamMsgAllowUserEditMessages,
-                                TeamMsgAllowUserDeleteMessages,
-                                TeamMsgAllowUserDeleteMessages,
-                                TeamMsgAllowTeamMentions,
-                                TeamMsgAllowChannelMentions,
-                                TeamFsAllowGiphy,
-                                TeamFsAllowStickersAndMemes,
-                                TeamFsAllowCustomMemes
-                            ],
-                            requiredInputs: [TeamId],
-                            outputs: [TeamIsSuccessful
-                            ]
-                        },
-                        [TeamClone]: {
-                            displayName: "Clone",
-                            description: "Makes a copy of an existing Team",
-                            type: "create",
-                            inputs: [TeamId,
-                                TeamDisplayName,
-                                TeamDescription,
-                                TeamMailNickname
-                            ],
-                            requiredInputs: [TeamId,
-                                TeamDisplayName,
-                                TeamDescription,
-                                TeamMailNickname
-                            ],
-                            outputs: [TeamId,
-                                TeamRequestStatusUrl,
-                                TeamIsSuccessful
-                            ]
-                        },
-                        [TeamAddOwner]: {
-                            displayName: "Add Owner",
-                            description: "Add owner to a team/group",
-                            type: "execute",
-                            parameters: {
-                                [TeamAddAsMemberAlso]: {
-                                    displayName: "Add as Member Also",
-                                    type: "boolean"
-                                }
-                            },
-                            inputs: [TeamId,
-                                TeamUserPrincipalName
-                            ],
-                            requiredInputs: [TeamId,
-                                TeamUserPrincipalName
-                            ],
-                            outputs: [TeamIsSuccessful
-                            ]
-                        },
-                        [TeamList]: {
-                            displayName: "List all teams/groups",
-                            description: "List all teams/groups",
-                            type: "list",
-                            parameters: {
-                                [TeamDisplayNameStartsWith]: {
-                                    displayName: "Display Name Starts With",
-                                    type: "string"
-                                }
-                            },
-                            outputs: [TeamId,
-                                TeamDisplayName,
-                                TeamResourceProvisioningOptions
-                            ]
-                        },
-                        [TeamMyTeamsList]: {
-                            displayName: "List my teams",
-                            description: "List my teams",
-                            type: "list",
-                            outputs: [TeamId,
-                                TeamDisplayName,
-                                TeamDescription,
-                                TeamIsArchived
-                            ]
-                        }
+                    [TeamWeburl]: {
+                        displayName: "Web Url",
+                        type: "string"
+                    },
+                    [TeamDisplayName]: {
+                        displayName: "Display Name",
+                        type: "string"
+                    },
+                    [TeamCreationDate]: {
+                        displayName: "Created On",
+                        type: "dateTime"
+                    },
+                    [TeamDescription]: {
+                        displayName: "Description",
+                        type: "string"
+                    },
+                    [TeamEmail]: {
+                        displayName: "Email",
+                        type: "string"
+                    },
+                    [TeamMailEnabled]: {
+                        displayName: "Mail Enabled",
+                        type: "boolean"
+                    },
+                    [TeamMailNickname]: {
+                        displayName: "Mail Nick Name",
+                        type: "string"
+                    },
+                    [TeamArchiveStatus]: {
+                        displayName: "Archive Status",
+                        type: "string"
+                    },
+                    [TeamOperationId]: {
+                        displayName: "Operation Id",
+                        type: "string"
+                    },
+                    [TeamOperationType]: {
+                        displayName: "Operation Type",
+                        type: "string"
+                    },
+                    [TeamLastActionDate]: {
+                        displayName: "Last Action Date",
+                        type: "dateTime"
+                    },
+                    [TeamAttemptsCount]: {
+                        displayName: "Attempts Count",
+                        type: "string"
+                    },
+                    [TeamTargetResourceId]: {
+                        displayName: "Target Resource Id",
+                        type: "string"
+                    },
+                    [TeamTargetResourceLocation]: {
+                        displayName: "Target Resource Location",
+                        type: "string"
+                    },
+                    [TeamArchiveError]: {
+                        displayName: "Error",
+                        type: "string"
+                    },
+                    [TeamUserPrincipalName]: {
+                        displayName: "User Principal Name",
+                        type: "string"
+                    },
+                    [TeamResourceProvisioningOptions]: {
+                        displayName: "Resource Provisioning Options",
+                        type: "string"
+                    },
+                    [TeamIsArchived]: {
+                        displayName: "Is Archived",
+                        type: "boolean"
+                    },
+                    [TeamIsSuccessful]: {
+                        displayName: "Is Successful",
+                        type: "boolean"
+                    },
+                    [TeamRequestStatusUrl]: {
+                        displayName: "Request Status Url",
+                        type: "boolean"
+                    },
+                    [TeamMsAllowCreateUpdateChannels]: {
+                        displayName: "Allow create/update channels to members",
+                        type: "boolean"
+                    },
+                    [TeamMsAllowDeleteChannels]: {
+                        displayName: "Allow delete channels to members",
+                        type: "boolean"
+                    },
+                    [TeamMsAllowAddRemoveApps]: {
+                        displayName: "Allow add/remove apps to members",
+                        type: "boolean"
+                    },
+                    [TeamMsAllowCreateUpdateRemoveTabs]: {
+                        displayName: "Allow create/update/remove tabs to members",
+                        type: "boolean"
+                    },
+                    [TeamMsAllowCreateUpdateRemoveConnectors]: {
+                        displayName: "Allow create/update/remove connectors to members",
+                        type: "boolean"
+                    },
+                    [TeamGsAllowCreateUpdateChannels]: {
+                        displayName: "Allow create/update channels to guests",
+                        type: "boolean"
+                    },
+                    [TeamGsAllowDeleteChannels]: {
+                        displayName: "Allow delete channels to guests",
+                        type: "boolean"
+                    },
+                    [TeamMsgAllowUserEditMessages]: {
+                        displayName: "Allow user to edit messages",
+                        type: "boolean"
+                    },
+                    [TeamMsgAllowUserDeleteMessages]: {
+                        displayName: "Allow user to delete messages",
+                        type: "boolean"
+                    },
+                    [TeamMsgAllowOwnerDeleteMessages]: {
+                        displayName: "Allow owner to delete messages",
+                        type: "boolean"
+                    },
+                    [TeamMsgAllowTeamMentions]: {
+                        displayName: "Allow team mentions",
+                        type: "boolean"
+                    },
+                    [TeamMsgAllowChannelMentions]: {
+                        displayName: "Allow channel mentions",
+                        type: "boolean"
+                    },
+                    [TeamFsAllowGiphy]: {
+                        displayName: "Allow Giphy",
+                        type: "boolean"
+                    },
+                    [TeamFsAllowStickersAndMemes]: {
+                        displayName: "Allow stickers and memes",
+                        type: "boolean"
+                    },
+                    [TeamFsAllowCustomMemes]: {
+                        displayName: "Allow custom memes",
+                        type: "boolean"
                     }
                 },
-                [Channel]: {
-                    displayName: "Channel",
-                    description: "Channel",
-                    properties: {
-                        [ChannelId]: {
-                            displayName: "Channel Id",
-                            description: "Channel Id",
-                            type: "string"
-                        },
-                        [ChannelDisplayName]: {
-                            displayName: "Display Name",
-                            description: "Display Name",
-                            type: "string"
-                        },
-                        [ChannelDescription]: {
-                            displayName: "Description",
-                            description: "Description",
-                            type: "string"
-                        },
-                        [ChannelEmail]: {
-                            displayName: "Email",
-                            description: "Email",
-                            type: "string"
-                        },
-                        [ChannelWeburl]: {
-                            displayName: "Web URL",
-                            description: "Web URL",
-                            type: "string"
-                        },
-                        [ChannelIsSuccessful]: {
-                            displayName: "Is Successful",
-                            description: "Is Successful",
-                            type: "string"
-                        },
-                        [ChannelTeamId]: {
-                            displayName: "Team Id",
-                            description: "Team Id",
-                            type: "string"
-                        },
-                        [ChannelMessageSubject]: {
-                            displayName: "Subject",
-                            description: "Message Subject",
-                            type: "string"
-                        },
-                        [ChannelMessageBody]: {
-                            displayName: "Body",
-                            description: "Message Body",
-                            type: "string"
-                        },
-                        [ChannelMessageIsImportant]: {
-                            displayName: "Is Important",
-                            description: "Message Importance (Normal/ High)",
-                            type: "boolean"
-                        }
+                methods: {
+                    [TeamGet]: {
+                        displayName: "Get",
+                        type: "read",
+                        inputs: [TeamId],
+                        requiredInputs: [TeamId],
+                        outputs: [TeamId,
+                            TeamDisplayName,
+                            TeamCreationDate,
+                            TeamDescription,
+                            TeamEmail,
+                            TeamMailEnabled,
+                            TeamMailNickname,
+                            TeamWeburl,
+                            TeamIsSuccessful
+                        ]
                     },
-                    methods: {
-                        [ChannelGet]: {
-                            displayName: "Get Channel",
-                            type: "read",
-                            inputs: [ChannelId,
-                                ChannelTeamId
-                            ],
-                            requiredInputs: [ChannelId,
-                                ChannelTeamId],
-                            outputs: [ChannelId,
-                                ChannelDisplayName,
-                                ChannelDescription,
-                                ChannelEmail,
-                                ChannelWeburl,
-                                ChannelIsSuccessful
-                            ]
+                    [TeamCreate]: {
+                        displayName: "Create",
+                        description: "Creates a new group and adds a team to the group",
+                        type: "create",
+                        inputs: [TeamDisplayName,
+                            TeamDescription,
+                            TeamMailEnabled,
+                            TeamMailNickname,
+                            TeamUserPrincipalName
+                        ],
+                        requiredInputs: [TeamDisplayName],
+                        outputs: [TeamId,
+                            TeamDisplayName,
+                            TeamCreationDate,
+                            TeamDescription,
+                            TeamEmail,
+                            TeamMailEnabled,
+                            TeamMailNickname,
+                            TeamWeburl,
+                            TeamIsSuccessful
+                        ]
+                    },
+                    [TeamAdd]: {
+                        displayName: "Add a team to Existing Group",
+                        description: "Add a team to an already existing AAD Group",
+                        type: "create",
+                        inputs: [TeamId,
+                            TeamUserPrincipalName
+                        ],
+                        outputs: [TeamId,
+                            TeamDisplayName,
+                            TeamCreationDate,
+                            TeamDescription,
+                            TeamEmail,
+                            TeamMailEnabled,
+                            TeamMailNickname,
+                            TeamWeburl,
+                            TeamIsSuccessful
+                        ]
+                    },
+                    [TeamArchive]: {
+                        displayName: "Archive",
+                        description: "Archive Team",
+                        type: "execute",
+                        inputs: [TeamId],
+                        requiredInputs: [TeamId],
+                        outputs: [TeamId,
+                            TeamRequestStatusUrl,
+                            TeamIsSuccessful
+                        ]
+                    },
+                    [TeamUnarchive]: {
+                        displayName: "Unarchive",
+                        description: "Unarchive Team",
+                        type: "execute",
+                        inputs: [TeamId],
+                        requiredInputs: [TeamId],
+                        outputs: [TeamId,
+                            TeamRequestStatusUrl,
+                            TeamIsSuccessful
+                        ]
+                    },
+                    [TeamCheckStatus]: {
+                        displayName: "Check Archival Status",
+                        description: "Check the stauts of an archival job.",
+                        type: "execute",
+                        parameters: {
+                            [TeamArchiveOperationUrl]: {
+                                displayName: "Archive/Unarchive operation URL",
+                                type: "string"
+                            }
                         },
-                        [ChannelList]: {
-                            displayName: "List Channels",
-                            type: "list",
-                            inputs: [ChannelTeamId],
-                            requiredInputs: [ChannelTeamId],
-                            outputs: [ChannelId,
-                                ChannelDisplayName,
-                                ChannelDescription,
-                                ChannelEmail
-                            ]
+                        requiredParameters: [TeamArchiveOperationUrl],
+                        outputs: [TeamOperationId,
+                            TeamOperationType,
+                            TeamCreationDate,
+                            TeamArchiveStatus,
+                            TeamLastActionDate,
+                            TeamAttemptsCount,
+                            TeamTargetResourceId,
+                            TeamTargetResourceLocation,
+                            TeamArchiveError
+                        ]
+                    },
+                    [TeamAddMember]: {
+                        displayName: "Add Member",
+                        description: "Add member to a team/group",
+                        type: "create",
+                        inputs: [TeamId,
+                            TeamUserPrincipalName
+                        ],
+                        requiredInputs: [TeamId,
+                            TeamUserPrincipalName
+                        ],
+                        outputs: [TeamIsSuccessful
+                        ]
+                    },
+                    [TeamUpdate]: {
+                        displayName: "Update",
+                        description: "Updates a team settings",
+                        type: "update",
+                        inputs: [TeamId,
+                            TeamMsAllowCreateUpdateChannels,
+                            TeamMsAllowDeleteChannels,
+                            TeamMsAllowAddRemoveApps,
+                            TeamMsAllowCreateUpdateRemoveTabs,
+                            TeamMsAllowCreateUpdateRemoveConnectors,
+                            TeamGsAllowCreateUpdateChannels,
+                            TeamGsAllowDeleteChannels,
+                            TeamMsgAllowUserEditMessages,
+                            TeamMsgAllowUserDeleteMessages,
+                            TeamMsgAllowUserDeleteMessages,
+                            TeamMsgAllowTeamMentions,
+                            TeamMsgAllowChannelMentions,
+                            TeamFsAllowGiphy,
+                            TeamFsAllowStickersAndMemes,
+                            TeamFsAllowCustomMemes
+                        ],
+                        requiredInputs: [TeamId],
+                        outputs: [TeamIsSuccessful
+                        ]
+                    },
+                    [TeamClone]: {
+                        displayName: "Clone",
+                        description: "Makes a copy of an existing Team",
+                        type: "create",
+                        inputs: [TeamId,
+                            TeamDisplayName,
+                            TeamDescription,
+                            TeamMailNickname
+                        ],
+                        requiredInputs: [TeamId,
+                            TeamDisplayName,
+                            TeamDescription,
+                            TeamMailNickname
+                        ],
+                        outputs: [TeamId,
+                            TeamRequestStatusUrl,
+                            TeamIsSuccessful
+                        ]
+                    },
+                    [TeamAddOwner]: {
+                        displayName: "Add Owner",
+                        description: "Add owner to a team/group",
+                        type: "execute",
+                        parameters: {
+                            [TeamAddAsMemberAlso]: {
+                                displayName: "Add as Member Also",
+                                type: "boolean"
+                            }
                         },
-                        [ChannelCreate]: {
-                            displayName: "Create Channel",
-                            type: "create",
-                            inputs: [ChannelTeamId,
-                                ChannelDisplayName,
-                                ChannelDescription,
-                            ],
-                            requiredInputs: [ChannelTeamId,
-                                ChannelDisplayName
-                            ],
-                            outputs: [ChannelId,
-                                ChannelDisplayName,
-                                ChannelDescription,
-                                ChannelEmail,
-                                ChannelWeburl,
-                                ChannelIsSuccessful
-                            ]
+                        inputs: [TeamId,
+                            TeamUserPrincipalName
+                        ],
+                        requiredInputs: [TeamId,
+                            TeamUserPrincipalName
+                        ],
+                        outputs: [TeamIsSuccessful
+                        ]
+                    },
+                    [TeamList]: {
+                        displayName: "List all teams/groups",
+                        description: "List all teams/groups",
+                        type: "list",
+                        parameters: {
+                            [TeamDisplayNameStartsWith]: {
+                                displayName: "Display Name Starts With",
+                                type: "string"
+                            }
                         },
-                        [ChannelDelete]: {
-                            displayName: "Delete Channel",
-                            type: "delete",
-                            inputs: [ChannelId,
-                                ChannelTeamId
-                            ],
-                            requiredInputs: [ChannelId,
-                                ChannelTeamId],
-                            outputs: [
-                                ChannelIsSuccessful
-                            ]
-                        },
-                        [ChannelUpdate]: {
-                            displayName: "Update Channel",
-                            type: "update",
-                            inputs: [ChannelTeamId,
-                                ChannelId,
-                                ChannelDisplayName,
-                                ChannelDescription
-                            ],
-                            requiredInputs: [ChannelId,
-                                ChannelTeamId,
-                                ChannelDisplayName,
-                                ChannelDescription],
-                            outputs: [ChannelIsSuccessful]
-                        },
-                        [ChannelSendMessage]: {
-                            displayName: "Send Message to a channel",
-                            type: "create",
-                            inputs: [ChannelTeamId,
-                                ChannelId,
-                                ChannelMessageSubject,
-                                ChannelMessageBody,
-                                ChannelMessageIsImportant
-                            ],
-                            requiredInputs: [ChannelTeamId,
-                                ChannelId,
-                                ChannelMessageBody
-                            ],
-                            outputs: [ChannelIsSuccessful]
-                        }
+                        outputs: [TeamId,
+                            TeamDisplayName,
+                            TeamResourceProvisioningOptions
+                        ]
+                    },
+                    [TeamMyTeamsList]: {
+                        displayName: "List my teams",
+                        description: "List my teams",
+                        type: "list",
+                        outputs: [TeamId,
+                            TeamDisplayName,
+                            TeamDescription,
+                            TeamIsArchived
+                        ]
+                    }
+                }
+            },
+            [Channel]: {
+                displayName: "Channel",
+                description: "Channel",
+                properties: {
+                    [ChannelId]: {
+                        displayName: "Channel Id",
+                        description: "Channel Id",
+                        type: "string"
+                    },
+                    [ChannelDisplayName]: {
+                        displayName: "Display Name",
+                        description: "Display Name",
+                        type: "string"
+                    },
+                    [ChannelDescription]: {
+                        displayName: "Description",
+                        description: "Description",
+                        type: "string"
+                    },
+                    [ChannelEmail]: {
+                        displayName: "Email",
+                        description: "Email",
+                        type: "string"
+                    },
+                    [ChannelWeburl]: {
+                        displayName: "Web URL",
+                        description: "Web URL",
+                        type: "string"
+                    },
+                    [ChannelIsSuccessful]: {
+                        displayName: "Is Successful",
+                        description: "Is Successful",
+                        type: "string"
+                    },
+                    [ChannelTeamId]: {
+                        displayName: "Team Id",
+                        description: "Team Id",
+                        type: "string"
+                    },
+                    [ChannelMessageSubject]: {
+                        displayName: "Subject",
+                        description: "Message Subject",
+                        type: "string"
+                    },
+                    [ChannelMessageBody]: {
+                        displayName: "Body",
+                        description: "Message Body",
+                        type: "string"
+                    },
+                    [ChannelMessageIsImportant]: {
+                        displayName: "Is Important",
+                        description: "Message Importance (Normal/ High)",
+                        type: "boolean"
                     }
                 },
-                [Tab]: {
-                    displayName: "Tabs",
-                    description: "Tabs",
-                    properties: {
-                        [TabId]: {
-                            displayName: "Tab Id",
-                            description: "Tab Id",
-                            type: "string"
-                        },
-                        [TabDisplayName]: {
-                            displayName: "Display Name",
-                            description: "Display Name",
-                            type: "string"
-                        },
-                        [TabConfigEntityId]: {
-                            displayName: "Entity Id",
-                            description: "Entity Id",
-                            type: "string"
-                        },
-                        [TabConfigContentUrl]: {
-                            displayName: "Content URL",
-                            description: "Content URL",
-                            type: "string"
-                        },
-                        [TabConfigWebsiteUrl]: {
-                            displayName: "Website URL",
-                            description: "Website URL",
-                            type: "string"
-                        },
-                        [TabConfigRemoveUrl]: {
-                            displayName: "Remove URL",
-                            description: "Remove URL",
-                            type: "string"
-                        },
-                        [TabTeamsAppAppId]: {
-                            displayName: "App Id",
-                            description: "App Id",
-                            type: "string"
-                        },
-                        [TabTeamsAppExternalId]: {
-                            displayName: "External Id",
-                            description: "External Id",
-                            type: "string"
-                        },
-                        [TabTeamsAppAppDisplayName]: {
-                            displayName: "App Display Name",
-                            description: "App Display Name",
-                            type: "string"
-                        },
-                        [TabTeamsAppDistMethod]: {
-                            displayName: "Distribution Method",
-                            description: "Distribution Method",
-                            type: "string"
-                        },
-                        [TabSortOrderIndex]: {
-                            displayName: "Sort Order Index",
-                            description: "Sort Order Index",
-                            type: "string"
-                        },
-                        [TabWeburl]: {
-                            displayName: "Web URL",
-                            description: "Web URL",
-                            type: "string"
-                        },
-                        [TabIsSuccessful]: {
-                            displayName: "Is Successful",
-                            description: "Is Successful",
-                            type: "boolean"
-                        },
-                        [TabTeamId]: {
-                            displayName: "Team Id",
-                            description: "Team Id",
-                            type: "string"
-                        },
-                        [TabChannelId]: {
-                            displayName: "Channel Id",
-                            description: "Channel Id",
-                            type: "string"
-                        }
+                methods: {
+                    [ChannelGet]: {
+                        displayName: "Get Channel",
+                        type: "read",
+                        inputs: [ChannelId,
+                            ChannelTeamId
+                        ],
+                        requiredInputs: [ChannelId,
+                            ChannelTeamId],
+                        outputs: [ChannelId,
+                            ChannelDisplayName,
+                            ChannelDescription,
+                            ChannelEmail,
+                            ChannelWeburl,
+                            ChannelIsSuccessful
+                        ]
                     },
-                    methods: {
-                        [TabGet]: {
-                            displayName: "Get tab",
-                            type: "read",
-                            inputs: [TabId,
-                                TabTeamId,
-                                TabChannelId
-                            ],
-                            requiredInputs: [TabId,
-                                TabTeamId,
-                                TabChannelId
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabTeamsAppAppId,
-                                TabTeamsAppExternalId,
-                                TabTeamsAppAppDisplayName,
-                                TabTeamsAppDistMethod,
-                                TabSortOrderIndex,
-                                TabWeburl
-                            ]
-                        },
-                        [TabList]: {
-                            displayName: "List tabs",
-                            type: "list",
-                            inputs: [TabTeamId,
-                                TabChannelId
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl
-                            ]
-                        },
-                        [TabCreateWordTab]: {
-                            displayName: "Create MS Word tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateExcelTab]: {
-                            displayName: "Create MS Excel tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreatePowerpointTab]: {
-                            displayName: "Create MS Powerpoint tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreatePdfTab]: {
-                            displayName: "Create PDF tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateOneNoteTab]: {
-                            displayName: "Create One Note tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreatePlannerTab]: {
-                            displayName: "Create Planner tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateSharePointTab]: {
-                            displayName: "Create SharePoint tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateMsFormsTab]: {
-                            displayName: "Create MS Forms tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateMsStreamTab]: {
-                            displayName: "Create MS Stream tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateWebsiteTab]: {
-                            displayName: "Create Website tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateWikiTab]: {
-                            displayName: "Create Wiki tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreatePowerBiTab]: {
-                            displayName: "Create PowerBI tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateDocumentLibraryTab]: {
-                            displayName: "Create Document Library tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabCreateCustomTab]: {
-                            displayName: "Create custom tab",
-                            type: "create",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabTeamsAppAppId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabTeamsAppAppId,
-                                TabDisplayName
-                            ],
-                            outputs: [TabId,
-                                TabDisplayName,
-                                TabWeburl,
-                                TabConfigEntityId,
-                                TabConfigContentUrl,
-                                TabConfigWebsiteUrl,
-                                TabConfigRemoveUrl,
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabDelete]: {
-                            displayName: "Delete tab",
-                            type: "delete",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabId
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabId
-                            ],
-                            outputs: [
-                                TabIsSuccessful
-                            ]
-                        },
-                        [TabUpdate]: {
-                            displayName: "Update tab",
-                            type: "update",
-                            inputs: [TabTeamId,
-                                TabChannelId,
-                                TabId,
-                                TabDisplayName
-                            ],
-                            requiredInputs: [TabTeamId,
-                                TabChannelId,
-                                TabId
-                            ],
-                            outputs: [TabIsSuccessful]
-                        },
+                    [ChannelList]: {
+                        displayName: "List Channels",
+                        type: "list",
+                        inputs: [ChannelTeamId],
+                        requiredInputs: [ChannelTeamId],
+                        outputs: [ChannelId,
+                            ChannelDisplayName,
+                            ChannelDescription,
+                            ChannelEmail
+                        ]
+                    },
+                    [ChannelCreate]: {
+                        displayName: "Create Channel",
+                        type: "create",
+                        inputs: [ChannelTeamId,
+                            ChannelDisplayName,
+                            ChannelDescription,
+                        ],
+                        requiredInputs: [ChannelTeamId,
+                            ChannelDisplayName
+                        ],
+                        outputs: [ChannelId,
+                            ChannelDisplayName,
+                            ChannelDescription,
+                            ChannelEmail,
+                            ChannelWeburl,
+                            ChannelIsSuccessful
+                        ]
+                    },
+                    [ChannelDelete]: {
+                        displayName: "Delete Channel",
+                        type: "delete",
+                        inputs: [ChannelId,
+                            ChannelTeamId
+                        ],
+                        requiredInputs: [ChannelId,
+                            ChannelTeamId],
+                        outputs: [
+                            ChannelIsSuccessful
+                        ]
+                    },
+                    [ChannelUpdate]: {
+                        displayName: "Update Channel",
+                        type: "update",
+                        inputs: [ChannelTeamId,
+                            ChannelId,
+                            ChannelDisplayName,
+                            ChannelDescription
+                        ],
+                        requiredInputs: [ChannelId,
+                            ChannelTeamId,
+                            ChannelDisplayName,
+                            ChannelDescription],
+                        outputs: [ChannelIsSuccessful]
+                    },
+                    [ChannelSendMessage]: {
+                        displayName: "Send Message to a channel",
+                        type: "create",
+                        inputs: [ChannelTeamId,
+                            ChannelId,
+                            ChannelMessageSubject,
+                            ChannelMessageBody,
+                            ChannelMessageIsImportant
+                        ],
+                        requiredInputs: [ChannelTeamId,
+                            ChannelId,
+                            ChannelMessageBody
+                        ],
+                        outputs: [ChannelIsSuccessful]
+                    }
+                }
+            },
+            [Tab]: {
+                displayName: "Tabs",
+                description: "Tabs",
+                properties: {
+                    [TabId]: {
+                        displayName: "Tab Id",
+                        description: "Tab Id",
+                        type: "string"
+                    },
+                    [TabDisplayName]: {
+                        displayName: "Display Name",
+                        description: "Display Name",
+                        type: "string"
+                    },
+                    [TabConfigEntityId]: {
+                        displayName: "Entity Id",
+                        description: "Entity Id",
+                        type: "string"
+                    },
+                    [TabConfigContentUrl]: {
+                        displayName: "Content URL",
+                        description: "Content URL",
+                        type: "string"
+                    },
+                    [TabConfigWebsiteUrl]: {
+                        displayName: "Website URL",
+                        description: "Website URL",
+                        type: "string"
+                    },
+                    [TabConfigRemoveUrl]: {
+                        displayName: "Remove URL",
+                        description: "Remove URL",
+                        type: "string"
+                    },
+                    [TabTeamsAppAppId]: {
+                        displayName: "App Id",
+                        description: "App Id",
+                        type: "string"
+                    },
+                    [TabTeamsAppExternalId]: {
+                        displayName: "External Id",
+                        description: "External Id",
+                        type: "string"
+                    },
+                    [TabTeamsAppAppDisplayName]: {
+                        displayName: "App Display Name",
+                        description: "App Display Name",
+                        type: "string"
+                    },
+                    [TabTeamsAppDistMethod]: {
+                        displayName: "Distribution Method",
+                        description: "Distribution Method",
+                        type: "string"
+                    },
+                    [TabSortOrderIndex]: {
+                        displayName: "Sort Order Index",
+                        description: "Sort Order Index",
+                        type: "string"
+                    },
+                    [TabWeburl]: {
+                        displayName: "Web URL",
+                        description: "Web URL",
+                        type: "string"
+                    },
+                    [TabIsSuccessful]: {
+                        displayName: "Is Successful",
+                        description: "Is Successful",
+                        type: "boolean"
+                    },
+                    [TabTeamId]: {
+                        displayName: "Team Id",
+                        description: "Team Id",
+                        type: "string"
+                    },
+                    [TabChannelId]: {
+                        displayName: "Channel Id",
+                        description: "Channel Id",
+                        type: "string"
                     }
                 },
-                [Apps]: {
-                    displayName: "Apps",
-                    description: "Apps",
-                    properties: {
-                        [AppsId]: {
-                            displayName: "App Id",
-                            description: "App Id",
-                            type: "string"
-                        },
-                        [AppsTeamId]: {
-                            displayName: "Team Id",
-                            description: "Team Id",
-                            type: "string"
-                        },
-                        [AppsDisplayName]: {
-                            displayName: "App Display Name",
-                            description: "App Display Name",
-                            type: "string"
-                        },
-                        [AppsVersion]: {
-                            displayName: "version",
-                            description: "version",
-                            type: "string"
-                        },
-                        [AppsTeamAppDefinitionId]: {
-                            displayName: "Teams Apps Definition Id",
-                            description: "Teams Apps Definition Id",
-                            type: "string"
-                        },
-                        [AppsTeamsAppId]: {
-                            displayName: "Teams Apps Id",
-                            description: "Teams Apps Id",
-                            type: "string"
-                        }
+                methods: {
+                    [TabGet]: {
+                        displayName: "Get tab",
+                        type: "read",
+                        inputs: [TabId,
+                            TabTeamId,
+                            TabChannelId
+                        ],
+                        requiredInputs: [TabId,
+                            TabTeamId,
+                            TabChannelId
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabTeamsAppAppId,
+                            TabTeamsAppExternalId,
+                            TabTeamsAppAppDisplayName,
+                            TabTeamsAppDistMethod,
+                            TabSortOrderIndex,
+                            TabWeburl
+                        ]
                     },
-                    methods: {
-                        [AppsList]: {
-                            displayName: "List installed apps",
-                            type: "list",
-                            inputs: [AppsTeamId],
-                            requiredInputs: [AppsTeamId],
-                            outputs: [AppsId,
-                                AppsDisplayName,
-                                AppsVersion,
-                                AppsTeamAppDefinitionId,
-                                AppsTeamsAppId
-                            ]
-                        }
+                    [TabList]: {
+                        displayName: "List tabs",
+                        type: "list",
+                        inputs: [TabTeamId,
+                            TabChannelId
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl
+                        ]
+                    },
+                    [TabCreateWordTab]: {
+                        displayName: "Create MS Word tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateExcelTab]: {
+                        displayName: "Create MS Excel tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreatePowerpointTab]: {
+                        displayName: "Create MS Powerpoint tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreatePdfTab]: {
+                        displayName: "Create PDF tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateOneNoteTab]: {
+                        displayName: "Create One Note tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreatePlannerTab]: {
+                        displayName: "Create Planner tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateSharePointTab]: {
+                        displayName: "Create SharePoint tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateMsFormsTab]: {
+                        displayName: "Create MS Forms tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateMsStreamTab]: {
+                        displayName: "Create MS Stream tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateWebsiteTab]: {
+                        displayName: "Create Website tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateWikiTab]: {
+                        displayName: "Create Wiki tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreatePowerBiTab]: {
+                        displayName: "Create PowerBI tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateDocumentLibraryTab]: {
+                        displayName: "Create Document Library tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabCreateCustomTab]: {
+                        displayName: "Create custom tab",
+                        type: "create",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabTeamsAppAppId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabTeamsAppAppId,
+                            TabDisplayName
+                        ],
+                        outputs: [TabId,
+                            TabDisplayName,
+                            TabWeburl,
+                            TabConfigEntityId,
+                            TabConfigContentUrl,
+                            TabConfigWebsiteUrl,
+                            TabConfigRemoveUrl,
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabDelete]: {
+                        displayName: "Delete tab",
+                        type: "delete",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabId
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabId
+                        ],
+                        outputs: [
+                            TabIsSuccessful
+                        ]
+                    },
+                    [TabUpdate]: {
+                        displayName: "Update tab",
+                        type: "update",
+                        inputs: [TabTeamId,
+                            TabChannelId,
+                            TabId,
+                            TabDisplayName
+                        ],
+                        requiredInputs: [TabTeamId,
+                            TabChannelId,
+                            TabId
+                        ],
+                        outputs: [TabIsSuccessful]
+                    },
+                }
+            },
+            [Apps]: {
+                displayName: "Apps",
+                description: "Apps",
+                properties: {
+                    [AppsId]: {
+                        displayName: "App Id",
+                        description: "App Id",
+                        type: "string"
+                    },
+                    [AppsTeamId]: {
+                        displayName: "Team Id",
+                        description: "Team Id",
+                        type: "string"
+                    },
+                    [AppsDisplayName]: {
+                        displayName: "App Display Name",
+                        description: "App Display Name",
+                        type: "string"
+                    },
+                    [AppsVersion]: {
+                        displayName: "version",
+                        description: "version",
+                        type: "string"
+                    },
+                    [AppsTeamAppDefinitionId]: {
+                        displayName: "Teams Apps Definition Id",
+                        description: "Teams Apps Definition Id",
+                        type: "string"
+                    },
+                    [AppsTeamsAppId]: {
+                        displayName: "Teams Apps Id",
+                        description: "Teams Apps Id",
+                        type: "string"
+                    }
+                },
+                methods: {
+                    [AppsList]: {
+                        displayName: "List installed apps",
+                        type: "list",
+                        inputs: [AppsTeamId],
+                        requiredInputs: [AppsTeamId],
+                        outputs: [AppsId,
+                            AppsDisplayName,
+                            AppsVersion,
+                            AppsTeamAppDefinitionId,
+                            AppsTeamsAppId
+                        ]
                     }
                 }
             }
         }
+
     });
 }
 
