@@ -13,29 +13,16 @@ This is a K2 Broker for Microsoft Teams (using TypeScript).
 
 This template requires [Node.js](https://nodejs.org/) v12.14.1+ to run.
 
-Install the dependencies and devDependencies:
+Install the dependencies and devDependencies, build the dist/index.js (K2 upload file), or run tests:
 
 ```bash
 npm install
 ```
 
-See the documentation for [@k2oss/k2-broker-core](https://www.npmjs.com/package/@k2oss/k2-broker-core)
-for more information about how to use the broker SDK package.
-
-## Running Unit Tests
-To run the unit tests, run:
-
+## Run tests
 ```bash
-npm test
+npm run test
 ```
-
-You can also use a development build, for debugging and coverage gutters:
-
-```bash
-npm run test:dev
-```
-
-You will find the code coverage results in [coverage/index.html](./coverage/index.html).
 
 ## Building your bundled JS
 When you're ready to build your broker, run the following command
