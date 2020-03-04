@@ -146,7 +146,7 @@ AppsTeamsAppId = "teamsAppId"; //  "com.k2.microsoft.teams.apps.teamsappid";
 AppsList = "list"; //  "com.k2.microsoft.teams.apps.list";
 
 //K2 Required
-ondescribe = async function(): Promise<void> {
+ondescribe = function() {
     postSchema({
 
         objects: {
@@ -1220,9 +1220,10 @@ function onexecuteTeam(methodName: string, parameters: SingleRecord, properties:
         }
     }
     catch (errMsg) {
-        postResult({
-            [TeamIsSuccessful]: false
-        });
+        // postResult({
+        //     [TeamIsSuccessful]: false
+        // });
+        Promise.reject(errMsg);
     }
 }
 
@@ -1288,15 +1289,16 @@ function onexecuteTab(methodName: string, parameters: SingleRecord, properties: 
         }
     }
     catch (errMsg) {
-        postResult({
-            [TabIsSuccessful]: false
-        });
+        // postResult({
+        //     [TabIsSuccessful]: false
+        // });
+        Promise.reject(errMsg);
     }
 }
 
 function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
 
-    try {
+    // try {
         parameters[TeamIsSuccessful] = true;
         // Get Group Details By Group ID
         GetGroupDetailsById(parameters, properties, function (b) {
@@ -1315,12 +1317,13 @@ function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
                 CreateAndReturnTeamObject(parameters, properties);
             });
         });
-    }
-    catch (errMsg) {
-        postResult({
-            [TeamIsSuccessful]: false
-        });
-    }
+    // }
+    // catch (errMsg) {
+    //     // postResult({
+    //     //     [TeamIsSuccessful]: false
+    //     // });
+    //     Promise.reject(errMsg);
+    // }
 }
 
 function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord) {
@@ -1354,7 +1357,8 @@ function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord)
 }
 
 function GetGroupIdByMailNickName(parameters: SingleRecord, properties: SingleRecord, cb) {
-    var url = baseUriEndpoint + "/groups?$filter=mailNickName%20eq%20'" + String(properties[TeamMailNickname]) + "'";
+    var component = encodeURIComponent(`?$filter=mailNickName&q='${properties[TeamMailNickname]}'`);
+    var url = baseUriEndpoint + "/groups" + component;
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
@@ -1637,10 +1641,14 @@ function onexecuteTeamList(parameters: SingleRecord, properties: SingleRecord) {
 }
 
 function GetTeams(parameters: SingleRecord, properties: SingleRecord, cb) {
-    if (parameters[TeamDisplayNameStartsWith] == null || parameters[TeamDisplayNameStartsWith] == "")
-        var url = baseUriEndpoint + "/groups?$select=id,displayName,resourceProvisioningOptions";
-    else
-        var url = baseUriEndpoint + "/groups?$filter=startswith(displayName, '" + parameters[TeamDisplayNameStartsWith] + "')&$select=id,displayName,resourceProvisioningOptions";
+    if (parameters[TeamDisplayNameStartsWith] == null || parameters[TeamDisplayNameStartsWith] == "") {
+        let component = encodeURIComponent("?$select=id,displayName,resourceProvisioningOptions");
+        var url = baseUriEndpoint + "/groups" + component;
+    }
+    else {
+        let component = encodeURIComponent("?$filter=startswith(displayName, '" + parameters[TeamDisplayNameStartsWith] + "')&$select=id,displayName,resourceProvisioningOptions");
+        var url = baseUriEndpoint + "/groups" + component;
+    }
     ExecuteRequest(url, null, "GET", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
