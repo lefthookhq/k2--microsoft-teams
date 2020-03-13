@@ -168,7 +168,7 @@ ondescribe = function() {
                     },
                     [TeamCreationDate]: {
                         displayName: "Created On",
-                        type: "dateTime"
+                        type: "string"
                     },
                     [TeamDescription]: {
                         displayName: "Description",
@@ -200,7 +200,7 @@ ondescribe = function() {
                     },
                     [TeamLastActionDate]: {
                         displayName: "Last Action Date",
-                        type: "dateTime"
+                        type: "string"
                     },
                     [TeamAttemptsCount]: {
                         displayName: "Attempts Count",
@@ -305,7 +305,8 @@ ondescribe = function() {
                         type: "read",
                         inputs: [TeamId],
                         requiredInputs: [TeamId],
-                        outputs: [TeamId,
+                        outputs: [
+                            TeamId,
                             TeamDisplayName,
                             TeamCreationDate,
                             TeamDescription,
@@ -320,14 +321,16 @@ ondescribe = function() {
                         displayName: "Create",
                         description: "Creates a new group and adds a team to the group",
                         type: "create",
-                        inputs: [TeamDisplayName,
+                        inputs: [
+                            TeamDisplayName,
                             TeamDescription,
                             TeamMailEnabled,
                             TeamMailNickname,
                             TeamUserPrincipalName
                         ],
                         requiredInputs: [TeamDisplayName],
-                        outputs: [TeamId,
+                        outputs: [
+                            TeamId,
                             TeamDisplayName,
                             TeamCreationDate,
                             TeamDescription,
@@ -1297,9 +1300,19 @@ function onexecuteTab(methodName: string, parameters: SingleRecord, properties: 
 }
 
 function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
-
-    // try {
+        // outputs: [
+        //     TeamId,
+        //     TeamDisplayName,
+        //     TeamCreationDate,
+        //     TeamDescription,
+        //     TeamEmail,
+        //     TeamMailEnabled,
+        //     TeamMailNickname,
+        //     TeamWeburl,
+        //     TeamIsSuccessful
+        // ]
         parameters[TeamIsSuccessful] = true;
+        parameters[TeamId] = properties[TeamId];
         // Get Group Details By Group ID
         GetGroupDetailsById(parameters, properties, function (b) {
             parameters[TeamDisplayName] = b.displayName;
@@ -1317,17 +1330,22 @@ function onexecuteTeamGet(parameters: SingleRecord, properties: SingleRecord) {
                 CreateAndReturnTeamObject(parameters, properties);
             });
         });
-    // }
-    // catch (errMsg) {
-    //     // postResult({
-    //     //     [TeamIsSuccessful]: false
-    //     // });
-    //     Promise.reject(errMsg);
-    // }
 }
 
 function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord) {
-//Create a Group
+    // Create a Group, then add a team and add its to it
+    // outputs: [
+    //     TeamId,
+    //     TeamDisplayName,
+    //     TeamCreationDate,
+    //     TeamDescription,
+    //     TeamEmail,
+    //     TeamMailEnabled,
+    //     TeamMailNickname,
+    //     TeamWeburl,
+    //     TeamIsSuccessful
+    // ]
+    parameters[TeamIsSuccessful] = true;
     CreateGroup(parameters, properties, function (a) {
         properties[TeamId] = parameters[TeamId] = a.id;
 
@@ -1341,17 +1359,17 @@ function onexecuteTeamCreate(parameters: SingleRecord, properties: SingleRecord)
         CreateTeam(parameters, properties, function (b) {
             parameters[TeamWeburl] = b.webUrl;
             //Get User
-            GetUser(parameters, properties, function (c) {
-                parameters[TeamUserId] = c.id;
-                //Add Group Owner
-                AddGroupOwner(parameters, properties, function (d) {
-                    //Add Members to the Group
-                    AddGroupMembers(parameters, properties, function (d) {
-                        //Post Results
-                        CreateAndReturnTeamObject(parameters, properties);
-                    });
-                });
-            });
+            // GetUser(parameters, properties, function (c) {
+            //     parameters[TeamUserId] = c.id;
+            //     //Add Group Owner
+            //     AddGroupOwner(parameters, properties, function (d) {
+            //         //Add Members to the Group
+            //         AddGroupMembers(parameters, properties, function (d) {
+            //             //Post Results
+                         CreateAndReturnTeamObject(parameters, properties);
+            //         });
+            //     });
+            // });
         });
     });
 }
@@ -1389,7 +1407,8 @@ function CreateGroup(parameters: SingleRecord, properties: SingleRecord, cb) {
         "groupTypes": ["Unified"],
         "mailEnabled": properties[TeamMailEnabled],
         "mailNickname": properties[TeamMailNickname],
-        "securityEnabled": true
+        "visibility":"Private",
+        "securityEnabled": false
     });
     var url = baseUriEndpoint + "/groups/";
     ExecuteRequest(url, data, "POST", function (responseText) {
@@ -1399,19 +1418,20 @@ function CreateGroup(parameters: SingleRecord, properties: SingleRecord, cb) {
 }
 
 function CreateTeam(parameters: SingleRecord, properties: SingleRecord, cb) {
-    var data = JSON.stringify({
-        "memberSettings": {
-            "allowCreateUpdateChannels": true
-        },
-        "messagingSettings": {
-            "allowUserEditMessages": true,
-            "allowUserDeleteMessages": true
-        },
-        "funSettings": {
-            "allowGiphy": true,
-            "giphyContentRating": "strict"
-        }
-    });
+    // var data = JSON.stringify({
+    //     "memberSettings": {
+    //         "allowCreateUpdateChannels": true
+    //     },
+    //     "messagingSettings": {
+    //         "allowUserEditMessages": true,
+    //         "allowUserDeleteMessages": true
+    //     },
+    //     "funSettings": {
+    //         "allowGiphy": true,
+    //         "giphyContentRating": "strict"
+    //     }
+    // });
+    var data = JSON.stringify({});
     var url = baseUriEndpoint + "/groups/" + properties[TeamId] + "/team";
     ExecuteRequest(url, data, "PUT", function (responseText) {
         if (typeof cb === 'function')
