@@ -1569,11 +1569,11 @@ function AddGroupMembers(parameters: SingleRecord, properties: SingleRecord, cb)
 
 // DELETE /groups/{id}/members/{id}/$ref
 function RemoveGroupMembers(parameters: SingleRecord, properties: SingleRecord, cb) {
-    var data = JSON.stringify({
-        "@odata.id": baseUriEndpoint + "/directoryObjects/" + parameters[TeamUserId]
-    });
-    var url = baseUriEndpoint + "/groups/" + properties[TeamId] + "/members/$ref";
-    ExecuteRequest(url, data, "DELETE", function (responseText) {
+    // var data = JSON.stringify({
+    //     "@odata.id": baseUriEndpoint + "/directoryObjects/" + parameters[TeamUserId]
+    // });
+    var url = baseUriEndpoint + "/groups/" + properties[TeamId] + "/members/" + parameters[TeamUserId] + "/$ref";
+    ExecuteRequest(url, null, "DELETE", function (responseText) {
         if (typeof cb === 'function')
             cb(responseText);
     });
